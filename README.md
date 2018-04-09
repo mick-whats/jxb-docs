@@ -1,1 +1,1 @@
-# wizz-docs
+# jxb-docs

@@ -1,0 +1,802 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>jxb document</title>
+<style type="text/css">body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url("../../images/modules/styleguide/para.png") no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  /*background: transparent url("../image/dirty-shade.png") repeat-x 0 0;*/
+  border: 1 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0; }
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+ul :last-child, ol :last-child {
+  margin-bottom: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+</style>
+
+</head>
+<body>
+<h1 style="border-top:0px;border-right:0px;border-bottom:0px;border-left:0px;background:linear-gradient(transparent 70%, silver 70%);text-shadow:0 0 2px silver;" id="header_main">jxb document</h1>
+
+<p><ul style="padding:0;position:relative;"><li style="border-top:0px;border-right:0px;border-bottom:3px double silver;border-left:0px;line-height:1.5;margin:0;padding:0.5em 0.5em 0.5em 1.7em;list-style-type:none!important;"><a href="api.html">api</a></li><li style="border-top:0px;border-right:0px;border-bottom:3px double silver;border-left:0px;line-height:1.5;margin:0;padding:0.5em 0.5em 0.5em 1.7em;list-style-type:none!important;"><a href="index.html">index</a></li><li style="border-top:0px;border-right:0px;border-bottom:3px double silver;border-left:0px;line-height:1.5;margin:0;padding:0.5em 0.5em 0.5em 1.7em;list-style-type:none!important;"><a href="table.html">table</a></li><li style="border-top:0px;border-right:0px;border-bottom:3px double silver;border-left:0px;line-height:1.5;margin:0;padding:0.5em 0.5em 0.5em 1.7em;list-style-type:none!important;"><a href="">index2</a></li></ul><h2>api</h2></p>
+<h2 style="border-top:0px;border-right:0px;border-bottom:double 5px silver;border-left:0px;">tags</h2>
+
+<p>jxbの引数は特殊な動作をします。引数の型によって判定されるので違う型であれば引数の順番は問いません。例えば以下のMethodは同義です。</p>
+
+<pre><code>jxb.p(&#39;paragraph&#39;,&#39;gold&#39;,&#39;gray&#39;,{id:&#39;paragraph_01&#39;})
+jxb.p(&#39;paragraph&#39;,{id:&#39;paragraph_01&#39;},&#39;gold&#39;,&#39;gray&#39;)
+jxb.p(&#39;paragraph&#39;,&#39;gold&#39;,{id:&#39;paragraph_01&#39;},&#39;gray&#39;)
+</code></pre><p>いずれも以下のhtmlに変換されます。<pre>&#x3C;p style=&#x22;color:gold;background-color:gray;&#x22; id=&#x22;paragraph_01&#x22;&#x3E;paragraph&#x3C;/p&#x3E;</pre></p>
+<h2 style="border-top:0px;border-right:0px;border-bottom:dotted 2px silver;border-left:0px;">options(ez:opts)</h2>
+
+<h3 style="border-top:0px;border-right:0px;border-bottom:0px;border-left:0px;background:linear-gradient(transparent 70%, silver 70%);text-shadow:0 0 2px silver;">String - [color,background-color]</h3>
+
+<p>colorオプションはタグのstyle.color属性に変換します。background-colorオプションはstyle.background-color属性に変換します</p>
+
+<h5>example</h5>
+
+
+<pre><code>jxb.p(&#39;paragraph&#39;,&#39;gold&#39;)
+jxb.p(&#39;paragraph&#39;,&#39;gold&#39;,&#39;gray&#39;)
+jxb.p(&#39;paragraph&#39;,&#39;&#39;,&#39;gray&#39;)
+</code></pre><pre><code>&lt;p style=&quot;color:gold;&quot;&gt;paragraph&lt;/p&gt;
+&lt;p style=&quot;color:gold;background-color:gray;&quot;&gt;paragraph&lt;/p&gt;
+&lt;p style=&quot;background-color:gray;&quot;&gt;paragraph&lt;/p&gt;
+</code></pre><h3 style="border-top:0px;border-right:0px;border-bottom:0px;border-left:0px;background:linear-gradient(transparent 70%, silver 70%);text-shadow:0 0 2px silver;">Object - [attr...]</h3>
+
+<p>attrオプションはタグの属性に変換します。複数個ある場合は結合し、後の値で上書きされます</p>
+
+<h5>example</h5>
+
+
+<pre><code>jxb.p(&#39;paragraph&#39;,{class:&#39;class_0&#39;})
+jxb.p(&#39;paragraph&#39;,{class:&#39;class_0&#39;},{style:{&#39;background-color&#39;:&#39;#ccc&#39;}})
+jxb.p(&#39;paragraph&#39;,{class:&#39;class_0&#39;},{style:{&#39;background-color&#39;:&#39;#ccc&#39;}},{class:&#39;class_1&#39;})
+</code></pre><pre><code>&lt;p class=&quot;class_0&quot;&gt;paragraph&lt;/p&gt;
+&lt;p class=&quot;class_0&quot; style=&quot;background-color:#ccc;&quot;&gt;paragraph&lt;/p&gt;
+&lt;p class=&quot;class_1&quot; style=&quot;background-color:#ccc;&quot;&gt;paragraph&lt;/p&gt;
+</code></pre><h3 style="border-top:0px;border-right:0px;border-bottom:0px;border-left:0px;background:linear-gradient(transparent 70%, silver 70%);text-shadow:0 0 2px silver;">Number - [template]</h3>
+
+<p>templateオプションは数値で指定します(一部のタグのみ対応しています)複数のstyleを設定済みですので簡単に指定できます</p>
+
+<h5>example</h5>
+
+
+<pre><code>jxb.h4(&#39;header&#39;,1)
+jxb.hr(2)
+jxb.blockquote(&#39;blockquote&#39;,3)
+</code></pre><pre><code>&lt;h4 style=&quot;border-top:0px;border-right:0px;border-bottom:dashed 2px silver;border-left:0px;&quot;&gt;header&lt;/h4&gt;
+&lt;hr style=&quot;height:0;border-top:1px dashed silver;&quot;&gt;
+&lt;blockquote style=&quot;border-top:0px;border-right:0px;border-bottom:0px;border-left:0px;background:transparent;padding:0.5em 0.5em 0.5em 2em;border:dotted 1px silver;&quot;&gt;blockquote&lt;/blockquote&gt;
+</code></pre><h3 style="border-top:0px;border-right:0px;border-bottom:0px;border-left:0px;background:linear-gradient(transparent 70%, silver 70%);text-shadow:0 0 2px silver;">boolean - [character-reference]</h3>
+
+<p>実体参照への変更設定</p>
+
+<h5>example</h5>
+
+
+<pre><code>jxb.p(&#39;&lt;br&gt;&#39;)
+jxb.p(&#39;&lt;br&gt;&#39;,true)
+jxb.p(&#39;&lt;br&gt;&#39;,false)
+</code></pre><pre><code>&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+&lt;p&gt;&amp;#x3C;br&amp;#x3E;&lt;/p&gt;
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+</code></pre><hr style="height:0;">
+
+<h2 style="border-top:0px;border-right:0px;border-bottom:0px;border-left:0px;background:linear-gradient(transparent 70%, #aaa 70%);text-shadow:0 0 2px #aaa;color:#222;" id="p_tag">p(text[,color, background-color, attributes, encode])</h2>
+
+<p>pタグ(段落)を生成します。</p>
+
+<h4>Parameters:</h4>
+
+<table><tr><td style="color:gray;border-style:none;width:20%;">Name</td><td style="color:gray;border-style:none;width:20%;">Type</td><td style="color:gray;border-style:none;width:60%;">Description</td></tr><tr><td style="border-style:none;width:130px;">text</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">タグの子要素です</td></tr></table>
+
+<h4>options:</h4>
+
+<table><tr><td style="color:gray;border-style:none;width:20%;">Name</td><td style="color:gray;border-style:none;width:20%;">Type</td><td style="color:gray;border-style:none;width:60%;">Description</td></tr><tr><td style="border-style:none;width:130px;">color</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">style.color属性に変換します。<code>red</code>等の色指定や<code>#fff</code>等の色番号指定ができます</td></tr><tr><td style="border-style:none;width:130px;">background-color</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">style.background-color属性に変換します。<code>red</code>等の色指定や<code>#fff</code>等の色番号指定ができます</td></tr><tr><td style="border-style:none;width:130px;">attributes</td><td style="border-style:none;width:130px;">object</td><td style="border-style:none;width:130px;">属性に変換されます</td></tr><tr><td style="border-style:none;width:130px;">encode</td><td style="border-style:none;width:130px;">boolean</td><td style="border-style:none;width:130px;">実体参照へエンコードされます</td></tr></table>
+
+<h4>examples:</h4>
+
+<pre>jxb.p("色の設定","gray","silver")
+jxb.p("属性の設定",{"style":{"border":"solid 1px #0000ff"}})
+jxb.p("複数の属性を適用できます",{"id":"p_04"},{"class":"paragraph"})</pre>
+
+<h4>result:</h4>
+
+<pre>&#x3C;p style=&#x22;color:gray;background-color:silver;&#x22;&#x3E;&#x8272;&#x306E;&#x8A2D;&#x5B9A;&#x3C;/p&#x3E;
+
+&#x3C;p style=&#x22;border:solid 1px #0000ff;&#x22;&#x3E;&#x5C5E;&#x6027;&#x306E;&#x8A2D;&#x5B9A;&#x3C;/p&#x3E;
+
+&#x3C;p id=&#x22;p_04&#x22; class=&#x22;paragraph&#x22;&#x3E;&#x8907;&#x6570;&#x306E;&#x5C5E;&#x6027;&#x3092;&#x9069;&#x7528;&#x3067;&#x304D;&#x307E;&#x3059;&#x3C;/p&#x3E;</pre>
+
+<h4>display:</h4>
+
+<pre><p style="color:gray;background-color:silver;">色の設定</p><br><p style="border:solid 1px #0000ff;">属性の設定</p><br><p id="p_04" class="paragraph">複数の属性を適用できます</p></pre>
+
+<h2 style="border-top:0px;border-right:0px;border-bottom:0px;border-left:0px;background:linear-gradient(transparent 70%, #aaa 70%);text-shadow:0 0 2px #aaa;color:#222;" id="pre_tag">pre(text[,color, background-color, attributes, encode])</h2>
+
+<p>preタグ(整形済みのテキスト)を生成します。</p>
+
+<h4>Parameters:</h4>
+
+<table><tr><td style="color:gray;border-style:none;width:20%;">Name</td><td style="color:gray;border-style:none;width:20%;">Type</td><td style="color:gray;border-style:none;width:60%;">Description</td></tr><tr><td style="border-style:none;width:130px;">text</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">タグの子要素です</td></tr></table>
+
+<h4>options:</h4>
+
+<table><tr><td style="color:gray;border-style:none;width:20%;">Name</td><td style="color:gray;border-style:none;width:20%;">Type</td><td style="color:gray;border-style:none;width:60%;">Description</td></tr><tr><td style="border-style:none;width:130px;">color</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">style.color属性に変換します。<code>red</code>等の色指定や<code>#fff</code>等の色番号指定ができます</td></tr><tr><td style="border-style:none;width:130px;">background-color</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">style.background-color属性に変換します。<code>red</code>等の色指定や<code>#fff</code>等の色番号指定ができます</td></tr><tr><td style="border-style:none;width:130px;">attributes</td><td style="border-style:none;width:130px;">object</td><td style="border-style:none;width:130px;">属性に変換されます</td></tr><tr><td style="border-style:none;width:130px;">encode</td><td style="border-style:none;width:130px;">boolean</td><td style="border-style:none;width:130px;">実体参照へエンコードされます</td></tr></table>
+
+<h4>examples:</h4>
+
+<pre>jxb.pre("色の設定","gray","silver")
+jxb.pre("属性の設定",{"style":{"border":"solid 1px #0000ff"}})
+jxb.pre("複数の属性を適用できます",{"id":"p_04"},{"class":"paragraph"})</pre>
+
+<h4>result:</h4>
+
+<pre>&#x3C;pre style=&#x22;color:gray;background-color:silver;&#x22;&#x3E;&#x8272;&#x306E;&#x8A2D;&#x5B9A;&#x3C;/pre&#x3E;
+
+&#x3C;pre style=&#x22;border:solid 1px #0000ff;&#x22;&#x3E;&#x5C5E;&#x6027;&#x306E;&#x8A2D;&#x5B9A;&#x3C;/pre&#x3E;
+
+&#x3C;pre id=&#x22;p_04&#x22; class=&#x22;paragraph&#x22;&#x3E;&#x8907;&#x6570;&#x306E;&#x5C5E;&#x6027;&#x3092;&#x9069;&#x7528;&#x3067;&#x304D;&#x307E;&#x3059;&#x3C;/pre&#x3E;</pre>
+
+<h4>display:</h4>
+
+<pre><pre style="color:gray;background-color:silver;">色の設定</pre><br><pre style="border:solid 1px #0000ff;">属性の設定</pre><br><pre id="p_04" class="paragraph">複数の属性を適用できます</pre></pre>
+
+<h2 style="border-top:0px;border-right:0px;border-bottom:0px;border-left:0px;background:linear-gradient(transparent 70%, #aaa 70%);text-shadow:0 0 2px #aaa;color:#222;" id="a_tag">a(text, linktext, target_blank[,color, background-color, attributes, encode])</h2>
+
+<p>aタグ(ハイパーリンク)を生成します。</p>
+
+<h4>Parameters:</h4>
+
+<table><tr><td style="color:gray;border-style:none;width:20%;">Name</td><td style="color:gray;border-style:none;width:20%;">Type</td><td style="color:gray;border-style:none;width:60%;">Description</td></tr><tr><td style="border-style:none;width:130px;">text</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">タグの子要素です</td></tr><tr><td style="border-style:none;width:130px;">linktext</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">href属性に変換されます</td></tr><tr><td style="border-style:none;width:130px;">target_blank</td><td style="border-style:none;width:130px;">boolean</td><td style="border-style:none;width:130px;">target属性をblankに設定します</td></tr></table>
+
+<h4>options:</h4>
+
+<table><tr><td style="color:gray;border-style:none;width:20%;">Name</td><td style="color:gray;border-style:none;width:20%;">Type</td><td style="color:gray;border-style:none;width:60%;">Description</td></tr><tr><td style="border-style:none;width:130px;">color</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">style.color属性に変換します。<code>red</code>等の色指定や<code>#fff</code>等の色番号指定ができます</td></tr><tr><td style="border-style:none;width:130px;">background-color</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">style.background-color属性に変換します。<code>red</code>等の色指定や<code>#fff</code>等の色番号指定ができます</td></tr><tr><td style="border-style:none;width:130px;">attributes</td><td style="border-style:none;width:130px;">object</td><td style="border-style:none;width:130px;">属性に変換されます</td></tr><tr><td style="border-style:none;width:130px;">encode</td><td style="border-style:none;width:130px;">boolean</td><td style="border-style:none;width:130px;">実体参照へエンコードされます</td></tr></table>
+
+<h4>examples:</h4>
+
+<pre>jxb.a("色の設定","#","gray","silver")
+jxb.a("属性の設定","#",{"style":{"border":"solid 1px #0000ff"}})
+jxb.a("新規タブで開く","#",true)</pre>
+
+<h4>result:</h4>
+
+<pre>&#x3C;a style=&#x22;color:gray;background-color:silver;&#x22; href=&#x22;#&#x22;&#x3E;&#x8272;&#x306E;&#x8A2D;&#x5B9A;&#x3C;/a&#x3E;
+
+&#x3C;a style=&#x22;border:solid 1px #0000ff;&#x22; href=&#x22;#&#x22;&#x3E;&#x5C5E;&#x6027;&#x306E;&#x8A2D;&#x5B9A;&#x3C;/a&#x3E;
+
+&#x3C;a href=&#x22;#&#x22; target=&#x22;_blank&#x22;&#x3E;&#x65B0;&#x898F;&#x30BF;&#x30D6;&#x3067;&#x958B;&#x304F;&#x3C;/a&#x3E;</pre>
+
+<h4>display:</h4>
+
+<pre><a style="color:gray;background-color:silver;" href="#">色の設定</a><br><a style="border:solid 1px #0000ff;" href="#">属性の設定</a><br><a href="#" target="_blank">新規タブで開く</a></pre>
+
+<h2 style="border-top:0px;border-right:0px;border-bottom:0px;border-left:0px;background:linear-gradient(transparent 70%, #aaa 70%);text-shadow:0 0 2px #aaa;color:#222;" id="ruby_tag">ruby(text, ruby[,color, background-color, attributes, encode])</h2>
+
+<p>rubyタグ(ルビ付きのテキスト)を生成します。</p>
+
+<h4>Parameters:</h4>
+
+<table><tr><td style="color:gray;border-style:none;width:20%;">Name</td><td style="color:gray;border-style:none;width:20%;">Type</td><td style="color:gray;border-style:none;width:60%;">Description</td></tr><tr><td style="border-style:none;width:130px;">text</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">タグの子要素です</td></tr><tr><td style="border-style:none;width:130px;">ruby</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">ルビを設定します</td></tr></table>
+
+<h4>options:</h4>
+
+<table><tr><td style="color:gray;border-style:none;width:20%;">Name</td><td style="color:gray;border-style:none;width:20%;">Type</td><td style="color:gray;border-style:none;width:60%;">Description</td></tr><tr><td style="border-style:none;width:130px;">color</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">style.color属性に変換します。<code>red</code>等の色指定や<code>#fff</code>等の色番号指定ができます</td></tr><tr><td style="border-style:none;width:130px;">background-color</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">style.background-color属性に変換します。<code>red</code>等の色指定や<code>#fff</code>等の色番号指定ができます</td></tr><tr><td style="border-style:none;width:130px;">attributes</td><td style="border-style:none;width:130px;">object</td><td style="border-style:none;width:130px;">属性に変換されます</td></tr><tr><td style="border-style:none;width:130px;">encode</td><td style="border-style:none;width:130px;">boolean</td><td style="border-style:none;width:130px;">実体参照へエンコードされます</td></tr></table>
+
+<h4>examples:</h4>
+
+<pre>jxb.ruby("本気","マジ")
+jxb.ruby("強敵","とも","gray","silver")
+jxb.ruby("完全無欠","ロックンローラー",{"style":{"text-decoration":"line-through"}})</pre>
+
+<h4>result:</h4>
+
+<pre>&#x3C;ruby&#x3E;&#x672C;&#x6C17;
+  &#x3C;rp&#x3E;(&#x3C;/rp&#x3E;
+  &#x3C;rt&#x3E;&#x30DE;&#x30B8;&#x3C;/rt&#x3E;
+  &#x3C;rp&#x3E;)&#x3C;/rp&#x3E;
+&#x3C;/ruby&#x3E;
+
+&#x3C;ruby style=&#x22;color:gray;background-color:silver;&#x22;&#x3E;&#x5F37;&#x6575;
+  &#x3C;rp&#x3E;(&#x3C;/rp&#x3E;
+  &#x3C;rt&#x3E;&#x3068;&#x3082;&#x3C;/rt&#x3E;
+  &#x3C;rp&#x3E;)&#x3C;/rp&#x3E;
+&#x3C;/ruby&#x3E;
+
+&#x3C;ruby style=&#x22;text-decoration:line-through;&#x22;&#x3E;&#x5B8C;&#x5168;&#x7121;&#x6B20;
+  &#x3C;rp&#x3E;(&#x3C;/rp&#x3E;
+  &#x3C;rt&#x3E;&#x30ED;&#x30C3;&#x30AF;&#x30F3;&#x30ED;&#x30FC;&#x30E9;&#x30FC;&#x3C;/rt&#x3E;
+  &#x3C;rp&#x3E;)&#x3C;/rp&#x3E;
+&#x3C;/ruby&#x3E;</pre>
+
+<h4>display:</h4>
+
+<pre><ruby>本気<rp>(</rp><rt>マジ</rt><rp>)</rp></ruby><br><ruby style="color:gray;background-color:silver;">強敵<rp>(</rp><rt>とも</rt><rp>)</rp></ruby><br><ruby style="text-decoration:line-through;">完全無欠<rp>(</rp><rt>ロックンローラー</rt><rp>)</rp></ruby></pre>
+
+<h2 style="border-top:0px;border-right:0px;border-bottom:0px;border-left:0px;background:linear-gradient(transparent 70%, #aaa 70%);text-shadow:0 0 2px #aaa;color:#222;" id="sup_tag">sup(text[,color, background-color, attributes, encode])</h2>
+
+<p>supタグ(上付き文字)を生成します。</p>
+
+<h4>Parameters:</h4>
+
+<table><tr><td style="color:gray;border-style:none;width:20%;">Name</td><td style="color:gray;border-style:none;width:20%;">Type</td><td style="color:gray;border-style:none;width:60%;">Description</td></tr><tr><td style="border-style:none;width:130px;">text</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">タグの子要素です</td></tr></table>
+
+<h4>options:</h4>
+
+<table><tr><td style="color:gray;border-style:none;width:20%;">Name</td><td style="color:gray;border-style:none;width:20%;">Type</td><td style="color:gray;border-style:none;width:60%;">Description</td></tr><tr><td style="border-style:none;width:130px;">color</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">style.color属性に変換します。<code>red</code>等の色指定や<code>#fff</code>等の色番号指定ができます</td></tr><tr><td style="border-style:none;width:130px;">background-color</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">style.background-color属性に変換します。<code>red</code>等の色指定や<code>#fff</code>等の色番号指定ができます</td></tr><tr><td style="border-style:none;width:130px;">attributes</td><td style="border-style:none;width:130px;">object</td><td style="border-style:none;width:130px;">属性に変換されます</td></tr><tr><td style="border-style:none;width:130px;">encode</td><td style="border-style:none;width:130px;">boolean</td><td style="border-style:none;width:130px;">実体参照へエンコードされます</td></tr></table>
+
+<h4>examples:</h4>
+
+<pre>jxb.sup("sample text")
+jxb.sup("sample text","gray","silver")
+jxb.sup("sample text",{"style":{"text-decoration":"line-through"}})</pre>
+
+<h4>result:</h4>
+
+<pre>&#x3C;sup&#x3E;sample text&#x3C;/sup&#x3E;
+
+&#x3C;sup style=&#x22;color:gray;background-color:silver;&#x22;&#x3E;sample text&#x3C;/sup&#x3E;
+
+&#x3C;sup style=&#x22;text-decoration:line-through;&#x22;&#x3E;sample text&#x3C;/sup&#x3E;</pre>
+
+<h4>display:</h4>
+
+<pre><sup>sample text</sup><br><sup style="color:gray;background-color:silver;">sample text</sup><br><sup style="text-decoration:line-through;">sample text</sup></pre>
+
+<h2 style="border-top:0px;border-right:0px;border-bottom:0px;border-left:0px;background:linear-gradient(transparent 70%, #aaa 70%);text-shadow:0 0 2px #aaa;color:#222;" id="sub_tag">sub(text[,color, background-color, attributes, encode])</h2>
+
+<p>subタグ(下付き文字)を生成します。</p>
+
+<h4>Parameters:</h4>
+
+<table><tr><td style="color:gray;border-style:none;width:20%;">Name</td><td style="color:gray;border-style:none;width:20%;">Type</td><td style="color:gray;border-style:none;width:60%;">Description</td></tr><tr><td style="border-style:none;width:130px;">text</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">タグの子要素です</td></tr></table>
+
+<h4>options:</h4>
+
+<table><tr><td style="color:gray;border-style:none;width:20%;">Name</td><td style="color:gray;border-style:none;width:20%;">Type</td><td style="color:gray;border-style:none;width:60%;">Description</td></tr><tr><td style="border-style:none;width:130px;">color</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">style.color属性に変換します。<code>red</code>等の色指定や<code>#fff</code>等の色番号指定ができます</td></tr><tr><td style="border-style:none;width:130px;">background-color</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">style.background-color属性に変換します。<code>red</code>等の色指定や<code>#fff</code>等の色番号指定ができます</td></tr><tr><td style="border-style:none;width:130px;">attributes</td><td style="border-style:none;width:130px;">object</td><td style="border-style:none;width:130px;">属性に変換されます</td></tr><tr><td style="border-style:none;width:130px;">encode</td><td style="border-style:none;width:130px;">boolean</td><td style="border-style:none;width:130px;">実体参照へエンコードされます</td></tr></table>
+
+<h4>examples:</h4>
+
+<pre>jxb.sub("sample text")
+jxb.sub("sample text","gray","silver")
+jxb.sub("sample text",{"style":{"text-decoration":"line-through"}})</pre>
+
+<h4>result:</h4>
+
+<pre>&#x3C;sub&#x3E;sample text&#x3C;/sub&#x3E;
+
+&#x3C;sub style=&#x22;color:gray;background-color:silver;&#x22;&#x3E;sample text&#x3C;/sub&#x3E;
+
+&#x3C;sub style=&#x22;text-decoration:line-through;&#x22;&#x3E;sample text&#x3C;/sub&#x3E;</pre>
+
+<h4>display:</h4>
+
+<pre><sub>sample text</sub><br><sub style="color:gray;background-color:silver;">sample text</sub><br><sub style="text-decoration:line-through;">sample text</sub></pre>
+
+<h2 style="border-top:0px;border-right:0px;border-bottom:0px;border-left:0px;background:linear-gradient(transparent 70%, #aaa 70%);text-shadow:0 0 2px #aaa;color:#222;" id="code_tag">code(text[,color, background-color, attributes, encode])</h2>
+
+<p>codeタグ(プログラムなどのコード)を生成します。</p>
+
+<h4>Parameters:</h4>
+
+<table><tr><td style="color:gray;border-style:none;width:20%;">Name</td><td style="color:gray;border-style:none;width:20%;">Type</td><td style="color:gray;border-style:none;width:60%;">Description</td></tr><tr><td style="border-style:none;width:130px;">text</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">タグの子要素です</td></tr></table>
+
+<h4>options:</h4>
+
+<table><tr><td style="color:gray;border-style:none;width:20%;">Name</td><td style="color:gray;border-style:none;width:20%;">Type</td><td style="color:gray;border-style:none;width:60%;">Description</td></tr><tr><td style="border-style:none;width:130px;">color</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">style.color属性に変換します。<code>red</code>等の色指定や<code>#fff</code>等の色番号指定ができます</td></tr><tr><td style="border-style:none;width:130px;">background-color</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">style.background-color属性に変換します。<code>red</code>等の色指定や<code>#fff</code>等の色番号指定ができます</td></tr><tr><td style="border-style:none;width:130px;">attributes</td><td style="border-style:none;width:130px;">object</td><td style="border-style:none;width:130px;">属性に変換されます</td></tr><tr><td style="border-style:none;width:130px;">encode</td><td style="border-style:none;width:130px;">boolean</td><td style="border-style:none;width:130px;">実体参照へエンコードされます</td></tr></table>
+
+<h4>examples:</h4>
+
+<pre>jxb.code("sample text")
+jxb.code("sample text","gray","silver")
+jxb.code("sample text",{"style":{"text-shadow":"3px 3px 2px #0000ff"}})</pre>
+
+<h4>result:</h4>
+
+<pre>&#x3C;pre&#x3E;&#x3C;code&#x3E;sample text&#x3C;/code&#x3E;&#x3C;/pre&#x3E;
+
+&#x3C;pre style=&#x22;color:gray;background-color:silver;&#x22;&#x3E;&#x3C;code&#x3E;sample text&#x3C;/code&#x3E;&#x3C;/pre&#x3E;
+
+&#x3C;pre style=&#x22;text-shadow:3px 3px 2px #0000ff;&#x22;&#x3E;&#x3C;code&#x3E;sample text&#x3C;/code&#x3E;&#x3C;/pre&#x3E;</pre>
+
+<h4>display:</h4>
+
+<pre><pre><code>sample text</code></pre><br><pre style="color:gray;background-color:silver;"><code>sample text</code></pre><br><pre style="text-shadow:3px 3px 2px #0000ff;"><code>sample text</code></pre></pre>
+
+<h2 style="border-top:0px;border-right:0px;border-bottom:0px;border-left:0px;background:linear-gradient(transparent 70%, #aaa 70%);text-shadow:0 0 2px #aaa;color:#222;" id="span_tag">span(text[,color, background-color, attributes, encode])</h2>
+
+<p>spanタグ(インライン要素)を生成します。</p>
+
+<h4>Parameters:</h4>
+
+<table><tr><td style="color:gray;border-style:none;width:20%;">Name</td><td style="color:gray;border-style:none;width:20%;">Type</td><td style="color:gray;border-style:none;width:60%;">Description</td></tr><tr><td style="border-style:none;width:130px;">text</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">タグの子要素です</td></tr></table>
+
+<h4>options:</h4>
+
+<table><tr><td style="color:gray;border-style:none;width:20%;">Name</td><td style="color:gray;border-style:none;width:20%;">Type</td><td style="color:gray;border-style:none;width:60%;">Description</td></tr><tr><td style="border-style:none;width:130px;">color</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">style.color属性に変換します。<code>red</code>等の色指定や<code>#fff</code>等の色番号指定ができます</td></tr><tr><td style="border-style:none;width:130px;">background-color</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">style.background-color属性に変換します。<code>red</code>等の色指定や<code>#fff</code>等の色番号指定ができます</td></tr><tr><td style="border-style:none;width:130px;">attributes</td><td style="border-style:none;width:130px;">object</td><td style="border-style:none;width:130px;">属性に変換されます</td></tr><tr><td style="border-style:none;width:130px;">encode</td><td style="border-style:none;width:130px;">boolean</td><td style="border-style:none;width:130px;">実体参照へエンコードされます</td></tr></table>
+
+<h4>examples:</h4>
+
+<pre>jxb.span("sample text")
+jxb.span("sample text","gray","silver")
+jxb.span("sample text",{"style":{"text-shadow":"3px 3px 2px #0000ff"}})</pre>
+
+<h4>result:</h4>
+
+<pre>&#x3C;span&#x3E;sample text&#x3C;/span&#x3E;
+
+&#x3C;span style=&#x22;color:gray;background-color:silver;&#x22;&#x3E;sample text&#x3C;/span&#x3E;
+
+&#x3C;span style=&#x22;text-shadow:3px 3px 2px #0000ff;&#x22;&#x3E;sample text&#x3C;/span&#x3E;</pre>
+
+<h4>display:</h4>
+
+<pre><span>sample text</span><br><span style="color:gray;background-color:silver;">sample text</span><br><span style="text-shadow:3px 3px 2px #0000ff;">sample text</span></pre>
+
+<h2 style="border-top:0px;border-right:0px;border-bottom:0px;border-left:0px;background:linear-gradient(transparent 70%, #aaa 70%);text-shadow:0 0 2px #aaa;color:#222;" id="h3_tag">h3(text[,color, background-color, attributes, encode, template])</h2>
+
+<p>h1〜h6タグ(見出し)を生成します。</p>
+
+<h4>Parameters:</h4>
+
+<table><tr><td style="color:gray;border-style:none;width:20%;">Name</td><td style="color:gray;border-style:none;width:20%;">Type</td><td style="color:gray;border-style:none;width:60%;">Description</td></tr><tr><td style="border-style:none;width:130px;">text</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">タグの子要素です</td></tr></table>
+
+<h4>options:</h4>
+
+<table><tr><td style="color:gray;border-style:none;width:20%;">Name</td><td style="color:gray;border-style:none;width:20%;">Type</td><td style="color:gray;border-style:none;width:60%;">Description</td></tr><tr><td style="border-style:none;width:130px;">color</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">style.color属性に変換します。<code>red</code>等の色指定や<code>#fff</code>等の色番号指定ができます</td></tr><tr><td style="border-style:none;width:130px;">background-color</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">style.background-color属性に変換します。<code>red</code>等の色指定や<code>#fff</code>等の色番号指定ができます</td></tr><tr><td style="border-style:none;width:130px;">attributes</td><td style="border-style:none;width:130px;">object</td><td style="border-style:none;width:130px;">属性に変換されます</td></tr><tr><td style="border-style:none;width:130px;">encode</td><td style="border-style:none;width:130px;">boolean</td><td style="border-style:none;width:130px;">実体参照へエンコードされます</td></tr><tr><td style="border-style:none;width:130px;">template</td><td style="border-style:none;width:130px;">number</td><td style="border-style:none;width:130px;">あらかじめ設定されたstyleを適用します</td></tr></table>
+
+<h4>examples:</h4>
+
+<pre>jxb.h3("sample text")
+jxb.h3("sample text",1)
+jxb.h3("sample text",2,"gray","silver")
+jxb.h3("sample text",3,{"style":{"text-shadow":"3px 3px 2px #0000ff"}})</pre>
+
+<h4>result:</h4>
+
+<pre>&#x3C;h3&#x3E;sample text&#x3C;/h3&#x3E;
+
+&#x3C;h3 style=&#x22;border-top:0px;border-right:0px;border-bottom:dashed 2px silver;border-left:0px;&#x22;&#x3E;sample text&#x3C;/h3&#x3E;
+
+&#x3C;h3 style=&#x22;border-top:0px;border-right:0px;border-bottom:double 5px silver;border-left:0px;color:gray;&#x22;&#x3E;sample text&#x3C;/h3&#x3E;
+
+&#x3C;h3 style=&#x22;border-top:0px;border-right:0px;border-bottom:dotted 2px silver;border-left:0px;text-shadow:3px 3px 2px #0000ff;&#x22;&#x3E;sample text&#x3C;/h3&#x3E;</pre>
+
+<h4>display:</h4>
+
+<pre><h3>sample text</h3><br><h3 style="border-top:0px;border-right:0px;border-bottom:dashed 2px silver;border-left:0px;">sample text</h3><br><h3 style="border-top:0px;border-right:0px;border-bottom:double 5px silver;border-left:0px;color:gray;">sample text</h3><br><h3 style="border-top:0px;border-right:0px;border-bottom:dotted 2px silver;border-left:0px;text-shadow:3px 3px 2px #0000ff;">sample text</h3></pre>
+
+<h2 style="border-top:0px;border-right:0px;border-bottom:0px;border-left:0px;background:linear-gradient(transparent 70%, #aaa 70%);text-shadow:0 0 2px #aaa;color:#222;" id="blockquote_tag">blockquote(text[,color, background-color, attributes, encode, template])</h2>
+
+<p>blockquoteタグを生成します。引用や転載であることを表します</p>
+
+<h4>Parameters:</h4>
+
+<table><tr><td style="color:gray;border-style:none;width:20%;">Name</td><td style="color:gray;border-style:none;width:20%;">Type</td><td style="color:gray;border-style:none;width:60%;">Description</td></tr><tr><td style="border-style:none;width:130px;">text</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">タグの子要素です</td></tr></table>
+
+<h4>options:</h4>
+
+<table><tr><td style="color:gray;border-style:none;width:20%;">Name</td><td style="color:gray;border-style:none;width:20%;">Type</td><td style="color:gray;border-style:none;width:60%;">Description</td></tr><tr><td style="border-style:none;width:130px;">color</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">style.color属性に変換します。<code>red</code>等の色指定や<code>#fff</code>等の色番号指定ができます</td></tr><tr><td style="border-style:none;width:130px;">background-color</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">style.background-color属性に変換します。<code>red</code>等の色指定や<code>#fff</code>等の色番号指定ができます</td></tr><tr><td style="border-style:none;width:130px;">attributes</td><td style="border-style:none;width:130px;">object</td><td style="border-style:none;width:130px;">属性に変換されます</td></tr><tr><td style="border-style:none;width:130px;">encode</td><td style="border-style:none;width:130px;">boolean</td><td style="border-style:none;width:130px;">実体参照へエンコードされます</td></tr><tr><td style="border-style:none;width:130px;">template</td><td style="border-style:none;width:130px;">number</td><td style="border-style:none;width:130px;">あらかじめ設定されたstyleを適用します</td></tr></table>
+
+<h4>examples:</h4>
+
+<pre>jxb.blockquote("sample text")
+jxb.blockquote("sample text",1)
+jxb.blockquote("sample text",2,"gray","silver")
+jxb.blockquote("sample text",3,{"style":{"text-shadow":"3px 3px 2px #0000ff"}})</pre>
+
+<h4>result:</h4>
+
+<pre>&#x3C;blockquote&#x3E;sample text&#x3C;/blockquote&#x3E;
+
+&#x3C;blockquote style=&#x22;border-top:0px;border-right:0px;border-bottom:0px;border-left:0px;background:transparent;padding:0.5em 0.5em 0.5em 2em;border:dashed 2px silver;&#x22;&#x3E;sample text&#x3C;/blockquote&#x3E;
+
+&#x3C;blockquote style=&#x22;border-top:0px;border-right:0px;border-bottom:0px;border-left:0px;background:silver;padding:0.5em 0.5em 0.5em 2em;border:double 5px silver;color:gray;&#x22;&#x3E;sample text&#x3C;/blockquote&#x3E;
+
+&#x3C;blockquote style=&#x22;border-top:0px;border-right:0px;border-bottom:0px;border-left:0px;background:transparent;padding:0.5em 0.5em 0.5em 2em;border:dotted 1px silver;text-shadow:3px 3px 2px #0000ff;&#x22;&#x3E;sample text&#x3C;/blockquote&#x3E;</pre>
+
+<h4>display:</h4>
+
+<pre><blockquote>sample text</blockquote><br><blockquote style="border-top:0px;border-right:0px;border-bottom:0px;border-left:0px;background:transparent;padding:0.5em 0.5em 0.5em 2em;border:dashed 2px silver;">sample text</blockquote><br><blockquote style="border-top:0px;border-right:0px;border-bottom:0px;border-left:0px;background:silver;padding:0.5em 0.5em 0.5em 2em;border:double 5px silver;color:gray;">sample text</blockquote><br><blockquote style="border-top:0px;border-right:0px;border-bottom:0px;border-left:0px;background:transparent;padding:0.5em 0.5em 0.5em 2em;border:dotted 1px silver;text-shadow:3px 3px 2px #0000ff;">sample text</blockquote></pre>
+
+<h2 style="border-top:0px;border-right:0px;border-bottom:0px;border-left:0px;background:linear-gradient(transparent 70%, #aaa 70%);text-shadow:0 0 2px #aaa;color:#222;" id="list_tag">list(listitems[,template, color, background-color, attributes, encode])</h2>
+
+<p>liタグ(リスト)を生成します。引数に配列を使用します。</p>
+
+<h4>Parameters:</h4>
+
+<table><tr><td style="color:gray;border-style:none;width:20%;">Name</td><td style="color:gray;border-style:none;width:20%;">Type</td><td style="color:gray;border-style:none;width:60%;">Description</td></tr><tr><td style="border-style:none;width:130px;">listitems</td><td style="border-style:none;width:130px;">array</td><td style="border-style:none;width:130px;">listのitem</td></tr></table>
+
+<h4>options:</h4>
+
+<table><tr><td style="color:gray;border-style:none;width:20%;">Name</td><td style="color:gray;border-style:none;width:20%;">Type</td><td style="color:gray;border-style:none;width:60%;">Description</td></tr><tr><td style="border-style:none;width:130px;">template</td><td style="border-style:none;width:130px;">number</td><td style="border-style:none;width:130px;">あらかじめ設定されたstyleを適用します</td></tr><tr><td style="border-style:none;width:130px;">color</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">style.color属性に変換します。<code>red</code>等の色指定や<code>#fff</code>等の色番号指定ができます</td></tr><tr><td style="border-style:none;width:130px;">background-color</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">style.background-color属性に変換します。<code>red</code>等の色指定や<code>#fff</code>等の色番号指定ができます</td></tr><tr><td style="border-style:none;width:130px;">attributes</td><td style="border-style:none;width:130px;">object</td><td style="border-style:none;width:130px;">属性に変換されます</td></tr><tr><td style="border-style:none;width:130px;">encode</td><td style="border-style:none;width:130px;">boolean</td><td style="border-style:none;width:130px;">実体参照へエンコードされます</td></tr></table>
+
+<h4>examples:</h4>
+
+<pre>jxb.list(["one","two","three"])
+jxb.list(["one","two","three"],"gray","silver")
+jxb.list(["one","two","three"],2)
+jxb.list(["one","two","three"],3,{"style":{"text-shadow":"3px 3px 2px #0000ff"}})</pre>
+
+<h4>result:</h4>
+
+<pre>&#x3C;ul style=&#x22;padding:0;position:relative;&#x22;&#x3E;
+  &#x3C;li&#x3E;one&#x3C;/li&#x3E;
+  &#x3C;li&#x3E;two&#x3C;/li&#x3E;
+  &#x3C;li&#x3E;three&#x3C;/li&#x3E;
+&#x3C;/ul&#x3E;
+
+&#x3C;ul style=&#x22;padding:0;position:relative;&#x22;&#x3E;
+  &#x3C;li style=&#x22;background:silver;color:gray;&#x22;&#x3E;one&#x3C;/li&#x3E;
+  &#x3C;li style=&#x22;background:silver;color:gray;&#x22;&#x3E;two&#x3C;/li&#x3E;
+  &#x3C;li style=&#x22;background:silver;color:gray;&#x22;&#x3E;three&#x3C;/li&#x3E;
+&#x3C;/ul&#x3E;
+
+&#x3C;ul style=&#x22;padding:0;position:relative;&#x22;&#x3E;
+  &#x3C;li style=&#x22;border-top:0px;border-right:0px;border-bottom:1px dashed silver;border-left:0px;line-height:1.5;margin:0;padding:0.5em 0.5em 0.5em 1.7em;list-style-type:none!important;&#x22;&#x3E;one&#x3C;/li&#x3E;
+  &#x3C;li style=&#x22;border-top:0px;border-right:0px;border-bottom:1px dashed silver;border-left:0px;line-height:1.5;margin:0;padding:0.5em 0.5em 0.5em 1.7em;list-style-type:none!important;&#x22;&#x3E;two&#x3C;/li&#x3E;
+  &#x3C;li style=&#x22;border-top:0px;border-right:0px;border-bottom:1px dashed silver;border-left:0px;line-height:1.5;margin:0;padding:0.5em 0.5em 0.5em 1.7em;list-style-type:none!important;&#x22;&#x3E;three&#x3C;/li&#x3E;
+&#x3C;/ul&#x3E;
+
+&#x3C;ul style=&#x22;padding:0;position:relative;&#x22;&#x3E;
+  &#x3C;li style=&#x22;border-top:0px;border-right:0px;border-bottom:2px dashed silver;border-left:0px;line-height:1.5;margin:0;padding:0.5em 0.5em 0.5em 1.7em;list-style-type:none!important;text-shadow:3px 3px 2px #0000ff;&#x22;&#x3E;one&#x3C;/li&#x3E;
+  &#x3C;li style=&#x22;border-top:0px;border-right:0px;border-bottom:2px dashed silver;border-left:0px;line-height:1.5;margin:0;padding:0.5em 0.5em 0.5em 1.7em;list-style-type:none!important;text-shadow:3px 3px 2px #0000ff;&#x22;&#x3E;two&#x3C;/li&#x3E;
+  &#x3C;li style=&#x22;border-top:0px;border-right:0px;border-bottom:2px dashed silver;border-left:0px;line-height:1.5;margin:0;padding:0.5em 0.5em 0.5em 1.7em;list-style-type:none!important;text-shadow:3px 3px 2px #0000ff;&#x22;&#x3E;three&#x3C;/li&#x3E;
+&#x3C;/ul&#x3E;</pre>
+
+<h4>display:</h4>
+
+<pre><ul style="padding:0;position:relative;"><li>one</li><li>two</li><li>three</li></ul><br><ul style="padding:0;position:relative;"><li style="background:silver;color:gray;">one</li><li style="background:silver;color:gray;">two</li><li style="background:silver;color:gray;">three</li></ul><br><ul style="padding:0;position:relative;"><li style="border-top:0px;border-right:0px;border-bottom:1px dashed silver;border-left:0px;line-height:1.5;margin:0;padding:0.5em 0.5em 0.5em 1.7em;list-style-type:none!important;">one</li><li style="border-top:0px;border-right:0px;border-bottom:1px dashed silver;border-left:0px;line-height:1.5;margin:0;padding:0.5em 0.5em 0.5em 1.7em;list-style-type:none!important;">two</li><li style="border-top:0px;border-right:0px;border-bottom:1px dashed silver;border-left:0px;line-height:1.5;margin:0;padding:0.5em 0.5em 0.5em 1.7em;list-style-type:none!important;">three</li></ul><br><ul style="padding:0;position:relative;"><li style="border-top:0px;border-right:0px;border-bottom:2px dashed silver;border-left:0px;line-height:1.5;margin:0;padding:0.5em 0.5em 0.5em 1.7em;list-style-type:none!important;text-shadow:3px 3px 2px #0000ff;">one</li><li style="border-top:0px;border-right:0px;border-bottom:2px dashed silver;border-left:0px;line-height:1.5;margin:0;padding:0.5em 0.5em 0.5em 1.7em;list-style-type:none!important;text-shadow:3px 3px 2px #0000ff;">two</li><li style="border-top:0px;border-right:0px;border-bottom:2px dashed silver;border-left:0px;line-height:1.5;margin:0;padding:0.5em 0.5em 0.5em 1.7em;list-style-type:none!important;text-shadow:3px 3px 2px #0000ff;">three</li></ul></pre>
+
+<h2 style="border-top:0px;border-right:0px;border-bottom:0px;border-left:0px;background:linear-gradient(transparent 70%, #aaa 70%);text-shadow:0 0 2px #aaa;color:#222;" id="table_tag">table(tableArray[,width, caption, attributes])</h2>
+
+<p>tableタグを生成します。引数として2次元配列が必要です。</p>
+
+<h4>Parameters:</h4>
+
+<table><tr><td style="color:gray;border-style:none;width:20%;">Name</td><td style="color:gray;border-style:none;width:20%;">Type</td><td style="color:gray;border-style:none;width:60%;">Description</td></tr><tr><td style="border-style:none;width:130px;">tableArray</td><td style="border-style:none;width:130px;">array</td><td style="border-style:none;width:130px;">tableのdataです。2次元配列が必要です</td></tr></table>
+
+<h4>options:</h4>
+
+<table><tr><td style="color:gray;border-style:none;width:20%;">Name</td><td style="color:gray;border-style:none;width:20%;">Type</td><td style="color:gray;border-style:none;width:60%;">Description</td></tr><tr><td style="border-style:none;width:130px;">width</td><td style="border-style:none;width:130px;">number</td><td style="border-style:none;width:130px;">width(幅)を設定します</td></tr><tr><td style="border-style:none;width:130px;">caption</td><td style="border-style:none;width:130px;">string</td><td style="border-style:none;width:130px;">caption(表題)を設定します</td></tr><tr><td style="border-style:none;width:130px;">attributes</td><td style="border-style:none;width:130px;">object</td><td style="border-style:none;width:130px;">属性に変換されます</td></tr></table>
+
+<h4>examples:</h4>
+
+<pre>jxb.table([["name","age","score"],["ann",16,98],["bob",22,76]])
+jxb.table([["name","age","score"],["ann",16,98],["bob",22,76]],"my caption")
+jxb.table([["name","age","score"],["ann",16,98],["bob",22,76]],"wide table",800)</pre>
+
+<h4>result:</h4>
+
+<pre>&#x3C;table&#x3E;
+  &#x3C;tr&#x3E;
+    &#x3C;td&#x3E;name&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;age&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;score&#x3C;/td&#x3E;
+  &#x3C;/tr&#x3E;
+  &#x3C;tr&#x3E;
+    &#x3C;td&#x3E;ann&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;16&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;98&#x3C;/td&#x3E;
+  &#x3C;/tr&#x3E;
+  &#x3C;tr&#x3E;
+    &#x3C;td&#x3E;bob&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;22&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;76&#x3C;/td&#x3E;
+  &#x3C;/tr&#x3E;
+&#x3C;/table&#x3E;
+
+&#x3C;table&#x3E;
+  &#x3C;caption&#x3E;my caption&#x3C;/caption&#x3E;
+  &#x3C;tr&#x3E;
+    &#x3C;td&#x3E;name&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;age&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;score&#x3C;/td&#x3E;
+  &#x3C;/tr&#x3E;
+  &#x3C;tr&#x3E;
+    &#x3C;td&#x3E;ann&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;16&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;98&#x3C;/td&#x3E;
+  &#x3C;/tr&#x3E;
+  &#x3C;tr&#x3E;
+    &#x3C;td&#x3E;bob&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;22&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;76&#x3C;/td&#x3E;
+  &#x3C;/tr&#x3E;
+&#x3C;/table&#x3E;
+
+&#x3C;table width=&#x22;800px&#x22; style=&#x22;table-layout:fixed;&#x22;&#x3E;
+  &#x3C;caption&#x3E;wide table&#x3C;/caption&#x3E;
+  &#x3C;tr&#x3E;
+    &#x3C;td&#x3E;name&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;age&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;score&#x3C;/td&#x3E;
+  &#x3C;/tr&#x3E;
+  &#x3C;tr&#x3E;
+    &#x3C;td&#x3E;ann&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;16&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;98&#x3C;/td&#x3E;
+  &#x3C;/tr&#x3E;
+  &#x3C;tr&#x3E;
+    &#x3C;td&#x3E;bob&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;22&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;76&#x3C;/td&#x3E;
+  &#x3C;/tr&#x3E;
+&#x3C;/table&#x3E;</pre>
+
+<h4>display:</h4>
+
+<pre><table><tr><td>name</td><td>age</td><td>score</td></tr><tr><td>ann</td><td>16</td><td>98</td></tr><tr><td>bob</td><td>22</td><td>76</td></tr></table><br><table><caption>my caption</caption><tr><td>name</td><td>age</td><td>score</td></tr><tr><td>ann</td><td>16</td><td>98</td></tr><tr><td>bob</td><td>22</td><td>76</td></tr></table><br><table width="800px" style="table-layout:fixed;"><caption>wide table</caption><tr><td>name</td><td>age</td><td>score</td></tr><tr><td>ann</td><td>16</td><td>98</td></tr><tr><td>bob</td><td>22</td><td>76</td></tr></table></pre>
+
+<footer style="text-align:center;"><hr><small style="text-shadow:0 4px 1px #ccc;">Generated by jxb</small></footer></body></html>

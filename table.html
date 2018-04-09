@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>jxb document -- table</title>
+<style type="text/css">body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url("../../images/modules/styleguide/para.png") no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  /*background: transparent url("../image/dirty-shade.png") repeat-x 0 0;*/
+  border: 1 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0; }
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+ul :last-child, ol :last-child {
+  margin-bottom: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      text-align: left;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+</style>
+
+</head>
+<body>
+<h1 style="border-top:0px;border-right:0px;border-bottom:0px;border-left:0px;background:linear-gradient(transparent 70%, silver 70%);text-shadow:0 0 2px silver;" id="header_main">jxb document -- table</h1>
+
+<p><ul style="padding:0;position:relative;"><li style="border-top:0px;border-right:0px;border-bottom:3px double silver;border-left:0px;line-height:1.5;margin:0;padding:0.5em 0.5em 0.5em 1.7em;list-style-type:none!important;"><a href="api.html">api</a></li><li style="border-top:0px;border-right:0px;border-bottom:3px double silver;border-left:0px;line-height:1.5;margin:0;padding:0.5em 0.5em 0.5em 1.7em;list-style-type:none!important;"><a href="index.html">index</a></li><li style="border-top:0px;border-right:0px;border-bottom:3px double silver;border-left:0px;line-height:1.5;margin:0;padding:0.5em 0.5em 0.5em 1.7em;list-style-type:none!important;"><a href="table.html">table</a></li><li style="border-top:0px;border-right:0px;border-bottom:3px double silver;border-left:0px;line-height:1.5;margin:0;padding:0.5em 0.5em 0.5em 1.7em;list-style-type:none!important;"><a href="">index2</a></li></ul><h2 style="border-top:0px;border-right:0px;border-bottom:0px;border-left:0px;background:linear-gradient(transparent 70%, #aaa 70%);text-shadow:0 0 2px #aaa;color:#222;" id="table_tag">table(data [,width,caption])</h2></p>
+<p>tableタグを生成します。引数として2次元配列が必要です。</p>
+
+<h5>Parameters:</h5>
+
+<table><tr><td>text</td><td>(string)</td><td>リンクのtext</td></tr><tr><td>ruby</td><td>(string)</td><td>ルビ</td></tr><tr><td>[attributes]</td><td>(Object)</td><td> タグの属性をObjectで指定します</td></tr></table>
+
+<h5>Returns:</h5>
+
+<table><tr><td>(Object)</td><td>jxbのinstanceが返ります</td></tr></table>
+
+<h5>example:</h5>
+
+<pre><code>var tableData1;
+tableData1 = [["one", "two", "three"], [1, 2, 3], [4, 5, 6]];
+note.table(tableData1, {
+  id: "table_01"
+});
+</code></pre>
+<hr style="height:0;">
+
+<p>セルに色を付けるには, tableCellを使います</p>
+
+<h5>sample</h5>
+
+<pre><code>var ann_name;
+ann_name = jxb.tableCell("ann", "gold", "gray");
+tableArray = [["name", "age", "score"], [ann_name, 16, 98], ["bob", 22, 76]];
+return jxb.table(tableArray);
+</code></pre>
+<pre>&#x3C;table&#x3E;
+  &#x3C;tr&#x3E;
+    &#x3C;td&#x3E;name&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;age&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;score&#x3C;/td&#x3E;
+  &#x3C;/tr&#x3E;
+  &#x3C;tr&#x3E;
+    &#x3C;td style=&#x22;color:gold;background-color:gray;&#x22;&#x3E;ann&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;16&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;98&#x3C;/td&#x3E;
+  &#x3C;/tr&#x3E;
+  &#x3C;tr&#x3E;
+    &#x3C;td&#x3E;bob&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;22&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;76&#x3C;/td&#x3E;
+  &#x3C;/tr&#x3E;
+&#x3C;/table&#x3E;</pre>
+
+<pre><table><tr><td>name</td><td>age</td><td>score</td></tr><tr><td style="color:gold;background-color:gray;">ann</td><td>16</td><td>98</td></tr><tr><td>bob</td><td>22</td><td>76</td></tr></table></pre>
+
+<hr style="height:0;">
+
+<p>動的に、行に色を付けるサンプルです</p>
+
+<h5>sample</h5>
+
+<pre><code>var newArr;
+tableArray = [["name", "age", "score"], ["ann", 16, 98], ["bob", 22, 76]];
+newArr = tableArray.map(function(a) {
+  if (a[1] > 20) {
+    a[1] = jxb.tableCell(`${a[1]}`, "", "gold");
+  }
+  return a;
+});
+return jxb.table(newArr);
+</code></pre>
+<pre>&#x3C;table&#x3E;
+  &#x3C;tr&#x3E;
+    &#x3C;td&#x3E;name&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;age&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;score&#x3C;/td&#x3E;
+  &#x3C;/tr&#x3E;
+  &#x3C;tr&#x3E;
+    &#x3C;td&#x3E;ann&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;16&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;98&#x3C;/td&#x3E;
+  &#x3C;/tr&#x3E;
+  &#x3C;tr&#x3E;
+    &#x3C;td&#x3E;bob&#x3C;/td&#x3E;
+    &#x3C;td style=&#x22;background-color:gold;&#x22;&#x3E;22&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;76&#x3C;/td&#x3E;
+  &#x3C;/tr&#x3E;
+&#x3C;/table&#x3E;</pre>
+
+<pre><table><tr><td>name</td><td>age</td><td>score</td></tr><tr><td>ann</td><td>16</td><td>98</td></tr><tr><td>bob</td><td style="background-color:gold;">22</td><td>76</td></tr></table></pre>
+
+<hr style="height:0;">
+
+<p>行に色を付けるには,styleを加えます</p>
+
+<h5>sample</h5>
+
+<pre><code>var row_cyan, row_pink;
+row_pink = {
+  style: {
+    "background-color": "pink"
+  }
+};
+row_cyan = {
+  style: {
+    "background-color": "cyan"
+  }
+};
+tableArray = [
+  ["name", "age", "score"],
+  ["ann", 16, 98, row_pink],
+  ["bob", 22, 76, row_cyan]
+];
+return jxb.table(tableArray);
+</code></pre>
+<pre>&#x3C;table&#x3E;
+  &#x3C;tr&#x3E;
+    &#x3C;td&#x3E;name&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;age&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;score&#x3C;/td&#x3E;
+  &#x3C;/tr&#x3E;
+  &#x3C;tr style=&#x22;background-color:pink;&#x22;&#x3E;
+    &#x3C;td&#x3E;ann&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;16&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;98&#x3C;/td&#x3E;
+  &#x3C;/tr&#x3E;
+  &#x3C;tr style=&#x22;background-color:cyan;&#x22;&#x3E;
+    &#x3C;td&#x3E;bob&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;22&#x3C;/td&#x3E;
+    &#x3C;td&#x3E;76&#x3C;/td&#x3E;
+  &#x3C;/tr&#x3E;
+&#x3C;/table&#x3E;</pre>
+
+<pre><table><tr><td>name</td><td>age</td><td>score</td></tr><tr style="background-color:pink;"><td>ann</td><td>16</td><td>98</td></tr><tr style="background-color:cyan;"><td>bob</td><td>22</td><td>76</td></tr></table></pre>
+
+<footer style="text-align:center;"><hr><small style="text-shadow:0 4px 1px #ccc;">Generated by jxb</small></footer></body></html>
