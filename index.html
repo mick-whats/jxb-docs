@@ -1,542 +1,1065 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>jxb document</title>
-<style type="text/css">body {
-  font-family: Helvetica, arial, sans-serif;
-  font-size: 14px;
-  line-height: 1.6;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  background-color: white;
-  padding: 30px; }
+  <head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
+    <title></title>
+    <style type="text/css">
+      @font-face {
+        font-family: octicons-link;
+        src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+      }
+      body {
+        -ms-text-size-adjust: 100%;
+        -webkit-text-size-adjust: 100%;
+        line-height: 1.5;
+        color: #24292e;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        font-size: 16px;
+        line-height: 1.5;
+        word-wrap: break-word;
+      }
+      body .pl-c {
+        color: #6a737d;
+      }
+      body .pl-c1,
+      body .pl-s .pl-v {
+        color: #005cc5;
+      }
+      body .pl-e,
+      body .pl-en {
+        color: #6f42c1;
+      }
+      body .pl-smi,
+      body .pl-s .pl-s1 {
+        color: #24292e;
+      }
+      body .pl-ent {
+        color: #22863a;
+      }
+      body .pl-k {
+        color: #d73a49;
+      }
+      body .pl-s,
+      body .pl-pds,
+      body .pl-s .pl-pse .pl-s1,
+      body .pl-sr,
+      body .pl-sr .pl-cce,
+      body .pl-sr .pl-sre,
+      body .pl-sr .pl-sra {
+        color: #032f62;
+      }
+      body .pl-v,
+      body .pl-smw {
+        color: #e36209;
+      }
+      body .pl-bu {
+        color: #b31d28;
+      }
+      body .pl-ii {
+        color: #fafbfc;
+        background-color: #b31d28;
+      }
+      body .pl-c2 {
+        color: #fafbfc;
+        background-color: #d73a49;
+      }
+      body .pl-c2::before {
+        content: "^M";
+      }
+      body .pl-sr .pl-cce {
+        font-weight: bold;
+        color: #22863a;
+      }
+      body .pl-ml {
+        color: #735c0f;
+      }
+      body .pl-mh,
+      body .pl-mh .pl-en,
+      body .pl-ms {
+        font-weight: bold;
+        color: #005cc5;
+      }
+      body .pl-mi {
+        font-style: italic;
+        color: #24292e;
+      }
+      body .pl-mb {
+        font-weight: bold;
+        color: #24292e;
+      }
+      body .pl-md {
+        color: #b31d28;
+        background-color: #ffeef0;
+      }
+      body .pl-mi1 {
+        color: #22863a;
+        background-color: #f0fff4;
+      }
+      body .pl-mc {
+        color: #e36209;
+        background-color: #ffebda;
+      }
+      body .pl-mi2 {
+        color: #f6f8fa;
+        background-color: #005cc5;
+      }
+      body .pl-mdr {
+        font-weight: bold;
+        color: #6f42c1;
+      }
+      body .pl-ba {
+        color: #586069;
+      }
+      body .pl-sg {
+        color: #959da5;
+      }
+      body .pl-corl {
+        text-decoration: underline;
+        color: #032f62;
+      }
+      body .octicon {
+        display: inline-block;
+        vertical-align: text-top;
+        fill: currentColor;
+      }
+      body .placeholder-box {
+        border: 1px solid #959da5;
+      }
+      body a {
+        background-color: transparent;
+      }
+      body a:active,
+      body a:hover {
+        outline-width: 0;
+      }
+      body strong {
+        font-weight: inherit;
+      }
+      body strong {
+        font-weight: bolder;
+      }
+      body h1 {
+        font-size: 2em;
+        margin: 0.67em 0;
+      }
+      body img {
+        border-style: none;
+      }
+      body code,
+      body kbd,
+      body pre {
+        font-family: monospace, monospace;
+        font-size: 1em;
+      }
+      body hr {
+        box-sizing: content-box;
+        height: 0;
+        overflow: visible;
+      }
+      body input {
+        font: inherit;
+        margin: 0;
+      }
+      body input {
+        overflow: visible;
+      }
+      body [type="checkbox"] {
+        box-sizing: border-box;
+        padding: 0;
+      }
+      body * {
+        box-sizing: border-box;
+      }
+      body input {
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+      }
+      body a {
+        color: #0366d6;
+        text-decoration: none;
+      }
+      body a:hover {
+        text-decoration: underline;
+      }
+      body strong {
+        font-weight: 600;
+      }
+      body hr {
+        height: 0;
+        margin: 15px 0;
+        overflow: hidden;
+        background: transparent;
+        border: 0;
+        border-bottom: 1px solid #dfe2e5;
+      }
+      body hr::before {
+        display: table;
+        content: "";
+      }
+      body hr::after {
+        display: table;
+        clear: both;
+        content: "";
+      }
+      body table {
+        border-spacing: 0;
+        border-collapse: collapse;
+      }
+      body td,
+      body th {
+        padding: 0;
+      }
+      body h1,
+      body h2,
+      body h3,
+      body h4,
+      body h5,
+      body h6 {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      body h1 {
+        font-size: 32px;
+        font-weight: 600;
+      }
+      body h2 {
+        font-size: 24px;
+        font-weight: 600;
+      }
+      body h3 {
+        font-size: 20px;
+        font-weight: 600;
+      }
+      body h4 {
+        font-size: 16px;
+        font-weight: 600;
+      }
+      body h5 {
+        font-size: 14px;
+        font-weight: 600;
+      }
+      body h6 {
+        font-size: 12px;
+        font-weight: 600;
+      }
+      body p {
+        margin-top: 0;
+        margin-bottom: 10px;
+      }
+      body blockquote {
+        margin: 0;
+      }
+      body ul,
+      body ol {
+        padding-left: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      body ol ol,
+      body ul ol {
+        list-style-type: lower-roman;
+      }
+      body ul ul ol,
+      body ul ol ol,
+      body ol ul ol,
+      body ol ol ol {
+        list-style-type: lower-alpha;
+      }
+      body dd {
+        margin-left: 0;
+      }
+      body code {
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+        font-size: 12px;
+      }
+      body pre {
+        margin-top: 0;
+        margin-bottom: 0;
+        font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+        font-size: 12px;
+      }
+      body .octicon {
+        vertical-align: text-bottom;
+      }
+      body .pl-0 {
+        padding-left: 0 !important;
+      }
+      body .pl-1 {
+        padding-left: 4px !important;
+      }
+      body .pl-2 {
+        padding-left: 8px !important;
+      }
+      body .pl-3 {
+        padding-left: 16px !important;
+      }
+      body .pl-4 {
+        padding-left: 24px !important;
+      }
+      body .pl-5 {
+        padding-left: 32px !important;
+      }
+      body .pl-6 {
+        padding-left: 40px !important;
+      }
+      body::before {
+        display: table;
+        content: "";
+      }
+      body::after {
+        display: table;
+        clear: both;
+        content: "";
+      }
+      body>*:first-child {
+        margin-top: 0 !important;
+      }
+      body>*:last-child {
+        margin-bottom: 0 !important;
+      }
+      body a:not([href]) {
+        color: inherit;
+        text-decoration: none;
+      }
+      body .anchor {
+        float: left;
+        padding-right: 4px;
+        margin-left: -20px;
+        line-height: 1;
+      }
+      body .anchor:focus {
+        outline: none;
+      }
+      body p,
+      body blockquote,
+      body ul,
+      body ol,
+      body dl,
+      body table,
+      body pre {
+        margin-top: 0;
+        margin-bottom: 16px;
+      }
+      body hr {
+        height: .25em;
+        padding: 0;
+        margin: 24px 0;
+        background-color: #e1e4e8;
+        border: 0;
+      }
+      body blockquote {
+        padding: 0 1em;
+        color: #6a737d;
+        border-left: 0.25em solid #dfe2e5;
+      }
+      body blockquote>:first-child {
+        margin-top: 0;
+      }
+      body blockquote>:last-child {
+        margin-bottom: 0;
+      }
+      body kbd {
+        display: inline-block;
+        padding: 3px 5px;
+        font-size: 11px;
+        line-height: 10px;
+        color: #444d56;
+        vertical-align: middle;
+        background-color: #fafbfc;
+        border: solid 1px #c6cbd1;
+        border-bottom-color: #959da5;
+        border-radius: 3px;
+        box-shadow: inset 0 -1px 0 #959da5;
+      }
+      body h1,
+      body h2,
+      body h3,
+      body h4,
+      body h5,
+      body h6 {
+        margin-top: 24px;
+        margin-bottom: 16px;
+        font-weight: 600;
+        line-height: 1.25;
+      }
+      body h1 .octicon-link,
+      body h2 .octicon-link,
+      body h3 .octicon-link,
+      body h4 .octicon-link,
+      body h5 .octicon-link,
+      body h6 .octicon-link {
+        color: #1b1f23;
+        vertical-align: middle;
+        visibility: hidden;
+      }
+      body h1:hover .anchor,
+      body h2:hover .anchor,
+      body h3:hover .anchor,
+      body h4:hover .anchor,
+      body h5:hover .anchor,
+      body h6:hover .anchor {
+        text-decoration: none;
+      }
+      body h1:hover .anchor .octicon-link,
+      body h2:hover .anchor .octicon-link,
+      body h3:hover .anchor .octicon-link,
+      body h4:hover .anchor .octicon-link,
+      body h5:hover .anchor .octicon-link,
+      body h6:hover .anchor .octicon-link {
+        visibility: visible;
+      }
+      body h1 {
+        padding-bottom: 0.3em;
+        font-size: 2em;
+        border-bottom: 1px solid #eaecef;
+      }
+      body h2 {
+        padding-bottom: 0.3em;
+        font-size: 1.5em;
+        border-bottom: 1px solid #eaecef;
+      }
+      body h3 {
+        font-size: 1.25em;
+      }
+      body h4 {
+        font-size: 1em;
+      }
+      body h5 {
+        font-size: 0.875em;
+      }
+      body h6 {
+        font-size: 0.85em;
+        color: #6a737d;
+      }
+      body ul,
+      body ol {
+        padding-left: 2em;
+      }
+      body ul ul,
+      body ul ol,
+      body ol ol,
+      body ol ul {
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      body li {
+        word-wrap: break-all;
+      }
+      body li>p {
+        margin-top: 16px;
+      }
+      body li+li {
+        margin-top: .25em;
+      }
+      body dl {
+        padding: 0;
+      }
+      body dl dt {
+        padding: 0;
+        margin-top: 16px;
+        font-size: 1em;
+        font-style: italic;
+        font-weight: 600;
+      }
+      body dl dd {
+        padding: 0 16px;
+        margin-bottom: 16px;
+      }
+      body table {
+        display: block;
+        width: 100%;
+        overflow: auto;
+      }
+      body table th {
+        font-weight: 600;
+      }
+      body table th,
+      body table td {
+        padding: 6px 13px;
+        border: 1px solid #dfe2e5;
+      }
+      body table tr {
+        background-color: #fff;
+        border-top: 1px solid #c6cbd1;
+      }
+      body table tr:nth-child(2n) {
+        background-color: #f6f8fa;
+      }
+      body img {
+        max-width: 100%;
+        box-sizing: content-box;
+        background-color: #fff;
+      }
+      body img[align=right] {
+        padding-left: 20px;
+      }
+      body img[align=left] {
+        padding-right: 20px;
+      }
+      body code {
+        padding: 0.2em 0.4em;
+        margin: 0;
+        font-size: 85%;
+        background-color: rgba(27, 31, 35, 0.05);
+        border-radius: 3px;
+      }
+      body pre {
+        word-wrap: normal;
+      }
+      body pre>code {
+        padding: 0;
+        margin: 0;
+        font-size: 100%;
+        word-break: normal;
+        white-space: pre;
+        background: transparent;
+        border: 0;
+      }
+      body .highlight {
+        margin-bottom: 16px;
+      }
+      body .highlight pre {
+        margin-bottom: 0;
+        word-break: normal;
+      }
+      body .highlight pre,
+      body pre {
+        padding: 16px;
+        overflow: auto;
+        font-size: 85%;
+        line-height: 1.45;
+        background-color: #f6f8fa;
+        border-radius: 3px;
+      }
+      body pre code {
+        display: inline;
+        max-width: auto;
+        padding: 0;
+        margin: 0;
+        overflow: visible;
+        line-height: inherit;
+        word-wrap: normal;
+        background-color: transparent;
+        border: 0;
+      }
+      body .full-commit .btn-outline:not(:disabled):hover {
+        color: #005cc5;
+        border-color: #005cc5;
+      }
+      body kbd {
+        display: inline-block;
+        padding: 3px 5px;
+        font: 11px "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier, monospace;
+        line-height: 10px;
+        color: #444d56;
+        vertical-align: middle;
+        background-color: #fafbfc;
+        border: solid 1px #d1d5da;
+        border-bottom-color: #c6cbd1;
+        border-radius: 3px;
+        box-shadow: inset 0 -1px 0 #c6cbd1;
+      }
+      body :checked+.radio-label {
+        position: relative;
+        z-index: 1;
+        border-color: #0366d6;
+      }
+      body .new-label-color-input:invalid {
+        color: #cb2431;
+      }
+      body .task-list-item {
+        list-style-type: none;
+      }
+      body .task-list-item+.task-list-item {
+        margin-top: 3px;
+      }
+      body .task-list-item input {
+        margin: 0 0.2em 0.25em -1.6em;
+        vertical-align: middle;
+      }
+      body hr {
+        border-bottom-color: #eee;
+      }
+    </style>
+    <style type="text/css">
+      .wrapper {
+        position: static;
+      }
+      aside#sidebar-content,
+      main#main-content {
+        position: sticky;
+        top: 0px;
+      }
+      aside#sidebar-content {
+        width: 25%;
+        /* float: left; */
+        /* box-shadow: 0 0 0.1.2rem #9da5ab; */
+        /* padding: 1.4rem; */
+        position: fixed;
+        /* width: 150px; */
+        overflow-y: scroll;
+        top: 0;
+        bottom: 0;
+      }
+      main#main-content {
+        width: 70%;
+        float: right;
+      }
+      footer {
+        clear: both;
+        position: relative;
+        top: 100px;
+      }
+      aside a {
+        border: none;
+        color: #5f5f5f;
+        cursor: pointer;
+      }
+      aside h1,
+      aside h2,
+      aside h3,
+      aside h4,
+      aside h5,
+      aside h6 {
+        padding-bottom: 1px;
+        margin: 1px;
+      }
+      aside h1 {
+        font-size: 1.5rem;
+      }
+      aside h2 {
+        font-size: 1.3rem;
+      }
+      aside h3 {
+        font-size: 1.1rem;
+      }
+      aside h4 {
+        font-size: 0.9rem;
+      }
+      aside h5 {
+        font-size: 0.7rem;
+      }
+      aside h6 {
+        font-size: 0.5rem;
+      }
+      @media screen and (max-width:600px) {
+        aside#sidebar-content,
+        main#main-content {
+          float: none;
+          width: auto;
+          position: static;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
 
-body > *:first-child {
-  margin-top: 0 !important; }
-body > *:last-child {
-  margin-bottom: 0 !important; }
+      <!-- Sidebar -->
+      <aside id="sidebar-content">
+        <p>
+          <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAQ8AAADjCAYAAACb3pFzAAAAAXNSR0IArs4c6QAAQABJREFUeAHtXQnAVdP2X32lNBdKCA1EpnjmzDPveXg8JPMzPjJHPEM8UiIej8qYhCKZZ56pkUKFFEmlfyOVKEV9979++9x17r77nnPuOfeee79777d33W9Pa6+99tprr7PnXSfBhqyxHLAcsByIyIGqiPAW3HLAcsByQHHAKg8rCJYDlgM5ccAqj5zYZhNZDlgOWOVhZcBywHIgJw5Y5ZET22wiywHLAas8rAxYDlgO5MQBqzxyYptNVNs5YHc4ENWr7UIQpvwQlDp16ijQH374gaZPn06LFi2i3377jRo0aEBt27alzp070yabbBIGnYUpAAdWrFhBy5YtU78lS5bQL7/8Qr/++iutXr1a1R3qr379+soNu1GjRtS4cWP1a968ObVs2VK5mzRp4kudKAyRBZELsX0TVmhEHS643SQWsnL79OlDN954o4L2Ylu/fv3o6quvpqoq26ELydKcwFatWkVff/01TZ48mT788EMaNmyYLx40dGncuo0EXkoA4SeddBLtsccetMsuu1CnTp3UxwHh1hgcYIZaE4IDTz31FJRs1h8rmBDYLEgYDlRXV7tgcH/55ZeJnj17+tYBK4MEfmHqKQjGxMG9kcS1116bYEWV4B6NosmkDYEI08Nd4ivUAa1sTRYO8PAksdNOO7mCKUIqQqbbTZs2TcydO7dWCVEW9uUd/c033yS4N6CUgvA6W+PX4fzcQTj0OEkvdo8ePRJTpkxJK5euNHR3GlCFeazyCFGhr7/+etavmQgWhG7AgAEZWGuLQGUUPI8A8GzEiBFZeQ+eg/96HeiNv1DuI444IjFx4sRa+6Gwg3OWrGxm5cqV7vhYh2Vh1b2u+4MPPqB169a5fjj8YNOArMflAOscuummm6hbt26Kd378Qzh+gMfPNH7pguDCpnnrrbdo9913p3PPPZcWL15soqx4v1UeIaq4Xr16SjBNofISVqBr2LBhmrLwE+wQWddakKeffppuu+02Vf5s/POrByQOitOZq8Ppbh3Gz/3YY49RmzZt6MUXX/QDqchwqzxCVCuPb0NApUDGjRtHP//8sxsApWMqHjfSOjI48OOPP9KVV16ZEe4VELWhe+GIEmbWo/hBx9/+9je6+OKLae3atVFQli2sVR4hqg5dUgiJl6CK8Ohofv/9d91r3RE5wCtbGcMAnc+6W1B7hUmcaQusaQuchItft00ZEL+kGThwIHXv3t1VIBKv46gUt1UeIWqybt26nooDSUU4xA6BzoIEcADzSw899FAGhM5f3S2AXmHSoAVGbIHVbR1WwgU+jK2nGTlyJP3rX/9SyXS8YfCUE4xVHgWorUoWmAKwy0WJBjh+/HiaNm2a6unly0dp0F549DC4BRbE6HEucREdd955J40aNUql0nFHRFPS4FZ5FKB6KlVYCsCqNJRotGPHjlVh4KHwMVtjlnjYuluQA4+E62FwI9zMR/wCK3C63y9MD7/ooosIxxnMvE085eq3Z1tirjkISqUKS8ysykCHiUYsc5tGGrPe0HUYUQ5ecEceeaTaYr7ZZpup8ywLFixQZ5BwFmbp0qWqcWOLO84qSXodt7i94rzCAC/hmCu7+eab6eGHH67IIwtWeYh05GHrQg3BEeHJA2WtTLpmzZqMiVKdEUF8lTicSzn//PNp++23p4022oj8ltmBF2mk7nBeBgoEhx7fe+894o1+eta+bkkvAKZ/yJAhdNZZZ9F+++0nIJVjMwOtycKBSy65JNQuR5YKBde6desEf9WyYLXRJgewDV14CJsbYppf4sxw+Hmzljr7YuI0/WF3+vLEbeKVV15JdOjQwZMGoSWMzYoj8ccff5iklL3fznlw7VtTGhzAEXrdcOvSva7bDMfeCky0oreRzaBnEMbgyP7RRx9NM2bMoMcffzwwSTaco0ePJlaMFdcjtcojUCxsZDE5gGP2UQ338ujWW28t2JwChj1nnnkmffvtt8S9EE/yTGVmAkG5vP/++xU3F2aVh1nT1l90Dkjj4yFF5Lx79+5NLVq0KHjD3GqrrdRKkJ8CCSIc5Xv77bfdjWNBsOUUZ5VHOdVWhdKKLzMaGIYeUQ0u7SmUEaUG/HDj/Aqf8s0puwkTJtDChQtzSluqiazyKNWaqWV0QYFgJ28UgyELroDUG3mU9Nlg9bkMceMUbd++fbMlzYjHsi2WiSvJWOVRSbVZC8uCO2Sl51LI4usK6sILL/Sd/wiiIZdhWRC+mo6zyqOma8DmrziAxmnegZKNNXqDlp5BtjRh43XcSKPjxxzLiSeemIZKj0+L0DyTJk3SfOXvtMqj/OuwIkqATVpeu0uDChemwQalD4oDblOB6PBHHXWU7lWwhaQnLbMS8VjlUSIVESSoJUJiQcnAfAeWRUvJmMpAr6Mtt9wyg1Q9PiOyAgOs8qjhSoXA4acLaikJodBi2sI2CRc/bIR5hesw5eiW3gjKhndharuxyqOGJQACqSsOnO/AQ0V+ptiNUhqM0Ci20Gf6EY4wr3BJUw62H5+lbOutt145FKOgNFrlUVD2hkMOQcXRbWyzXn/99dXpz0svvZT4CQeFQAQZdk00Sj1PoUUvGeYr3njjDfUg1g033EDvvPOO5+SnV1odTym59TJ70eWnPPzSIRx1W1GGK9SaLBwo9ME4bnjq8BULmHsIS9yvvvpqFupqNvrll1/OoJ0biDpQxs8+usRlO5Amb+MgbdhfTR5A5HtHQtMp5eHVFpcfleCwPQ+u2Zo0eFdVZu5ZoFxSxI3DWY888kjR5xEkf5cgw4F4PL15zDHHqBgTftasWcRKl2Rvg98X2UBbNl5sN4eRcokdVIBKuxi5tKa3gzhfoXG4iAaCZzY+KS7izjvvPIKS4ScPJbjgdlBjwDAF92a89tprLh0Cr5cD92LgFnk8Il1JBre7Dxo0SBUJ5Q2qPyk3dsNuscUW4q0I2/Y8argacdO63uBAjjREuCUOF+pCeciXHHE1YaDEunbtmqY4QAfolIZUE3QVI0+pC7zToj/yJOFBNBx00EG08cYbB4GUXZxVHjVcZZ07d86gQIRRVyIA6t+/vxoKRN2JmZFBjgHff/897bXXXhT0jo3Qjiy23npr4rd7Q+XGcx5k3ueRLaHJHxNepyVKnAkrfuT37rvvUq9evSQotP3nP/+5YNcGhCYiZkCrPGJmaFR0HTt2pO22284zmZfw410QXLMX9/jZKy+dKFzPh+PomMsIMnqDPv7440Nv/MKJ02y4zXx1mnW3wOm0mPGIM8MkndgSLzZ2wB522GFpPUOBDbKhQCvxGkKrPIJqvQhxzZo1U8ogSlboNp966qkZCkSEPCwuHV5vaGZ6KA6vHpLA6WkFJxoMXlATI+HiN+18d5eKMtDz0d0SL/kiTqdbwnVb4mE/88wzhKEHjI5Xh/dzH3jggRU334GyWuXhV+NFDIciwIQajAhstuyfffZZpUD4bkwXNGxaJAjTeACH272CFIfggg0jNODkabt27VSYHi4NT2wBMP0Sns1GOkmLvCV/PU/BERQnMKY9f/58Ouecc9SD22ZcGD/yvPzyyytuyIKyW+URRgIKCAPBxy3fd9xxhxJ8aQh6lrrQ6+F4mez0009P25DllV5PE8WNHoffkErwmLQhfyhCvDVrxiGNhInth0fCs9lVVVUuThPWjxd6uLjFBg7MKU2dOlXNbeC+EPT0xJh0S7hpCxyW2g844ABfGs10ZeVnplmThQOF3iSG7LFJascdd4y88YiFLcFfxthv5+Y7O3OihRtNgt8pycLRRMLcNGbenI5yZfthk9hPP/2UNS8AmPnpiRCH29I///zzxN13351o1apV1ryz0YZ48ALlypa/Tks5ue0+D67lUjDYujx48GDaZ599IpPz6KOPUsOGDenee++N1D1mQfX8ImJVRejAFxRwYQ1WWDAMy2bky+wFFyXPsCtPWOKWc0M41Ial1nnz5qlh2bhx4zKWnk26otAkaZ9++mm14gR/UHkFvtxsqzxKqMawfwJnWu67777IVN1///3qTAyGP2GNl0Bj1eOQQw5x9zHoiiNMA3riiSeUIvOjQVdYuluH1/PUw3U3aIECkLmiP/3pT3p0mvuzzz5L8+fiCUOTjhevxHXr1k0Pqjw3M8WaLBwo1LDFqyuNx6LQHWdJS/txY0nz6/F63O23356lNE60X9789olvPnqeXu6bbropVN5eQLkMW7xoKFaYznMzz1I/j+TF/1zC7IQp13xNGXw9TYOt3E899ZQZHOjninfjsRP1gQcecP1+DuQt6WDzmJ+OOOII+uqrr/ySpIWbtGMPSM+ePdNgKtkjvJMygh+bb765et/lL3/5iwRXtG2VR4lVL4Ty0EMPzTjHYgprENk9evSg4cOHB4GoOFEAmDfAPMXEiROzphEAkx6s/ITdTSo4KsXG0Omll16iOXPmEN530Y3wSWw9rtzdVnmUQA2KYMGWBo17MXbaaSeXOgl3A7I4unfvTvzWqtu78APHROJll12mhD9qHoIT8y2Yc5BySHhtsnEA8P/+7//cIoMXen3mylsXYSk6uIDWZOFAoeY8kK0596D7v/jii5znH1jWVNoxY8Zk5CHFRV6YIxHYXOy//vWvsSwTl9uch/CqS5cuafz7xz/+keD3bYXFLu/1enUjy9wB7WhNFg4UUnnoWXsJ2LBhw9KEU4Q2iv3pp5/q2bhuvickDTd/HdP82fLAxC6vzrj4QL9XGVyAAEe5Kg/wSPgmNsKglHlpOKDE5R9lhy1c0zVpWITc7L26tqeddhr985//dGG8HF7pdDicrTAfkX7hhRfo3HPPdYdJgNdp0dP7uUeNGpV2zBx04BcVjx/+cglHec1yY+Ia2/r1oUy5lCcsnVZ5hOVUgeCyNXxke+edd6bNf5ikZGus2BQFBYLNXzA4HYoTrzDZ0iogjz+Y59h33309YipzQ5RnQbVAk4+oV5wSxlwQbDNeS1q2Tqs8yqDqGjduTPjKBxk/JYRw/LChCmcshg4d6p4ODcIXFIdbxNAbqsQGEVRuifPitRkmvAHf995778AeiMAK/nKx7Q7TMqkpLAHiIhos43oZPwHUw3FD+1lnneWVPHQY9nPgTlVRSqETFggQK1K4oAjb+/FwlNxQju36MCi/2bBx8RC2qsPmszHq5vrx48dnDD2QTucf8HmFST6wvQwUCHp+kydPpiZNmmSAmPRlAJRqADPHmiwcKNaEqU6GOfEoft4AljapyYKn/GKznKXF5+M3cfI+jgR3wXUylVtoy4iIEJDrhCkO4Zn5m/5sZAg8382aWLRoUQKrXDwnlLjqqqti4yXq4eyzz86gNRttpRxvhy0lqtX1rxELkPv1xHBBJlABgzgYscMUR8cdBC84BR4bodq3b5+WRGDSAovsEfokW9Mv4V60Ikzg0VvBhq8ddtiBjjvuODXXhBvbeOlVXZkAPAIrtuA2ba/4xx9/nJ5//nkTtGz9VnmUQdXpggg3JlB333330ApDT4/iejWiIDYAHkMVdL1NA9wmfhOmkP6dd945rTxBZdPpFDiEiRt06m7EYSjUqVMnuvrqq9VQBwoUCkaHM8tn4pR4pLnmmmsq5qlKqzykZsvIxgQqP7bknijVG0W2YkSBFVw4s4LbtHJJKzjitnVa/NxmnnqDlzQIEzfgdbeeHuH169cn3hRHM2fOJCyh+xk9HxMGKy/6kxVmfDn5rfIo0doKEkCQ3KZNG3rzzTcV9WYDMIuk49LdJpzpR4PZf//9qW/fvmZUjfulHLDFnY0oUzEgnRmWDQficYYHVw/gCEEupnfv3qRfHxmW/lzyKmQaqzwKyd08cHsJtSlku+yyC7344osqFzPOK72QExQnMLA322wzhT/fy4l1nHG7UZZs5TF5IzRkSydwXjbS3nrrrWo4g/gouHhyOO35CjOtH71edNRkmFUeNcn9iHmbQobkxx57rHsEX48PEkCJ0+FNUvB1ff/99yvitbegcprljurnbejq1jXhadj0OLToZwpJr1+euYRb5RGCayIYpVqpF110EeEndIYokvpSBsHj1Xu/4+Vh8BcDBgquefPmaVkFlSkNMCYPemXYbRvVjBgxQu0ziZqulOCt8ghRG6I0ii2YIUhzQXB/qd92cRdIcwSVBXdvyh2mWpJIXXM9XRi38DgMrMC0aNEi7WwNwnPBI/hytbFRzWslKggfnnTA051eJqhuvOBrKswqj5rifIz5Qtjw5u2KFStiaTwLFiyIkbpwqHijVjhADWr16tVpz05oUUV14vkH2XsTNmM8rYnLg7xMTShALzqyhVnlkY1DHF/KlSlfKVz+g7dGxB+iWL4gvLOSnnzySd/4QkTkwuNc0sRNu/A76AJmrzxBO+qrnI1VHllqD8KxbNmyLFA1Fw0hxNIfNi/FafCYVNCkXpx5AVfYJxT0fFE30nj18GK6RYFFpb+m6Y6DR1Z5ZOEin3cgvkwnC1TNRePNFiwZFsIcc8wx9PHHHxcCdQZOrwNjGUBGABquNF4jqmheUQLYdYpfrkbw5Jq+JtJZ5ZGF69ieXKr7HHDKFhf65GuCGiBehefX4/LNImt6PLmp39maNUESQG90ujts+nzhhHfYfZqLApT8BY/4y8G2yiOGWpKKN+18UQc1Bj75SWjYfkZo8YvXw4PywUVCWMXBY1CFNkF0+OWtlxPuXHD44Y4SjtUTbD2vTcYqj4DahiAuX748a8MRgYUNAd5mm21ieYZAbxg6mbNnz876lRaa9HR+br98BB73UWDpFoqkkCYbHWHyjgNHmHxMGKy41DZT+0ocoYYhiFhSQ+MJa9Boce4kTmHSFQGUWb6PCpkNTMfvV058VU855RTCEXUxYdIJrJ8tOMT2g8sWnm/6bPizxcsVj4Az+ZstbbnGl7XyMAXG9OdbKcDHl8MECkMxBAV5gBbsa8BQZdq0aRlFEzpMWweUuKh8knSvv/46XXDBBSR7MiRczyOKG3QIDrGjppey5JI+Sl5+sJI/LpQWI2Hi97N33XVXv6iyCC9r5QGB0SsqbgECPkwW6nmYteoVh0buFW6mDfJ7pUfD9Vv5EXjT1vOQOD1M3MI7sSUctqSD/dhjj1H//v1VtB6uw4d163mhR6P3asLgwJWDNT2ZjTJgKT/bHbNmeTbeeGNq166dChY+mjCl7i9b5QGG44fKKxTz8YXFTePZjN4IAHv44YerS2SypQuKN3HyI9LqGLiUOSitXxzesP3xxx/VkwAmjPBQbDNep+e6664jnM0Q3utxZrqwfqxURN3ijUaLnqEfzWHzzhcOvAAdUQzODWGFqZxN2SoPCKwIrdhxVwTmO8K832oKr+nPly587fv06eOiMfGHKT9Of+Lw3IYbbkgYfkQ1Zp6Y/xg9erRbB8BnwoTJQ9LAxrJ4FIP6wTOPKL/giZI+Dtjp06crvkbFdfTRR7u9pjD1FxV/MeDLVnmAOfjy4HwAbnbC4zro9sYpRJgkNOcXwlQ0P0Go6i4OWt555x21lyMIV1AcCMHVd9dee62iCX/acXc5n63RwgNM3Op7QCTczSiEQ9KIHSKJJ4ikz8YLz8Q5Bq5cuZLOOOOMnFL73YKfE7KaSsTMLivDNzAl+MuZ4KXDjJutcbs3nmdkJRJLmW655ZaMPLiePMNYeN3wzz//PJb8/d6q1fPS6fEKv/jiixO8dVrRI7eEC3E8JHNp1vHA7YVLYPS4tm3bJpYuXSoofW0zbxMQ8XzVoS89krdp42b7mjCQQ97C79Kr88SkEX49np+vSOCmdtNk45EJX9N+fKlL3ghT+eRo4qCDDnIrTCpJrxiE8eXACe6N+JZL8PkCcAQfl07wduOMvCRP0xYakCZMYwrKG3F4AgBCZuYTxY9HlyHkQYZvIssrD9DDXXA3H/A2DH+9aBo4cGBkWqLw24+uqDSjfrnXFZpWkQ2pO77C0Kv4ZRdW8spDKhz2kCFD3AozK8TLj4ecJX2UmkEafFVMnFL5QfZ+++3nNqQoeeqw/BhRYo899nDLGpQf4rzo5FfdQtGBspoPXpv5eeE3YXr16pUTr/VyP/fcc6HLLPmDNrzdYpow9R4GRscLRTx8+PDINOp1hJ4a79XR0ebNtzRkRfSUvPIAL1DJ+J1wwglpFRdGqPk1MbcXInjEFtzCbwkfMGCAm4/kIbYIrZ+N19GBJ4rR4eHmiU03f798zHCdPgzpeLk4CgnqVXcTp+7X8evhcEscGlYUo5cb6TCMElxmHl5+HfZ///ufKyeCV2y/YZtOq8DqYXAjHEMM9NDQE9Tz9KIpW5jJI+D3y9ukpdT8ZaE8wDTeGp3Ybrvt3EYVthIBh98dd9yRdTjB5xMSl112mSsgYfPQBebDDz+MVMe64MDNp2TdMup4g9w6nVCW4FVYI/mjgfGFNm7Zg/ILiuOJWJW14A1LB+ByeTVOyg775ptvTvDqi2eWYekROF7JSWDuSua9JJ+gsgfBII7PCKneoOThSWgZBdYBrcyQkjeY2eauPH399ddQeGn0csW4Ybo7DSjpufTSS9V7r5tuuqnaKcnjV7Wigk0+Y8eO9UqSNUzyxMYf0NeyZcusaQCAckha2J988gntueeeodJ6AXXs2JEmTZpEuJ5PjOTh55dw2Fit+vvf/+55N4jQqcN7uXHjOg7theWBjgOrZ7vttlveB8xQx3gyAnspcFSgUaNG6s0VHBlAGddbbz2VLW5fw4Y+nNnBPo158+ap92SxwjVhwgSXtLBldxNoDkmL4/pTpkxR9CDarBctSfk4uRBlYaCteVnM/Spzpbhu1AX8EiY2wr1+Zrzp90oTJgyrBVG/KgLPDy4nuPF70hsmb4ylMcmbr8FwhzdrRaZDeAgbfJChQhR6MCGOye4w5TVhJH89XMLE1uN0txlv+nVYL3cQvMSxUo/CirKAhQYsG5PLUp5XZfuFSUWb8X7hJhx/rXLiJRqavuxn4vXzC11YcZg7d25OeXslQpc9qBFLvn50IRxje1GMYnvlZYbxs445KY8gWmo67q233jKLWRH+slIezz77bMkKVj6rLNibkquAQ3HwRq3YhRFzB3w5T850Yc8Nb7KLTBdfp6jyDKOgcuVZLumi0iPwlao4ULFlpTz4dvCMvQ9SSbkIRFCaMHh1mFx7Hd9//33ODZTPgyR4jiVyAw2bIEiB6GX34yOWi7FhL2zPA3DYQ9GqVauceeJHS6HCvfiAMCh1mTwOy+9ygysr5QHm1lTvw0tIRCB79OiR0xgfjeWss87KqaHgy64LZ9gGGlVAoUD8hjBBPAFvEI+9G1FN7969c+KJ1EdN2zzpnMAcVqWbklUefo0B8wP6uBgCmk2I4xQmyUvyxdo/ekS5GF5dSZvoDUsn8tYVRy55Z0uj8x/li7JpTS9H165dE5gIjWIwfyN8FlymX8KLYZt5e/kRBoX+2muvRSlqWcOWrPIwuQphFoGGfeWVV2Z8ncxKjUOwgnCia4q9IbkafuUtowxhaOYlv1yzzCkd+M1L5aG2ZINfwjPYzZo1S/zwww9Z85W6FcBsu17D8ClfGClHGDx9+/b13GNilkvKVwl2SSsPL8ZLGGzZCaoLbJiKjgLjJ0BYGuV9ATnLAOiPOmTBl00Uh/DBJMAv3ITLxY/t2RdeeGFkhTd+/HiVXVjaBI7fgE1TRFHqLS5Yv/oX/NiY5vUBkTKg4Lo7F76XapqyUB7CfLF1Zo4ZM8Y9wJatoqXC87VxKErOJwhNYuu0ZXMPHjw4dENEL6eQk6PZaJV4lPOuu+5y6Q7iOeIwqZvLqovkxzenZUyS51t/UdObZURdPP7441l3LEsZYOciH3r6UnSXtPIIyzBsbOLHmV0lElU4wsCLAPEzjLEJApZYw+SNeZV8ejlh+RgF7uWXXw5Fe7du3dwrEnJtQKhf/VBkGJ7FDcPPSSYGDRqkttDnWo4o/C0H2IpQHsLoNWvWJHBA6rTTTgsl2GEFjC8dVqs8WHmIW3DeeOMNl1ZRUDpdOFaPxlOKhi9KCuwVQOnFcT2BlB0Trzg8x2/p+n4ovHio8zOs+6ijjkpgTmrcuHEJvrpRSLC2xoGyOdvClR7J4JzEZ599RnxQjaKeVcDLZbgl64ADDiDcCobzEWKYd2lX70l4PvaXX35JJ598ctqtZdw1VpcNg45SNniOkyc3iQ8UppGJ28t4yVWdK5GIuHnH2/EJb9jgFjn54WY5udsU9c/zROrRKlbSQoYK69y5M+EsEOoWN6vxHJayceYJd4vW9MXKLrEl7KgI5WEKpZefv94EYYNg4TAcT/651dKwYUN1mGyDDTag5s2bU+PGjVUcf8VcmEI6hF5elVCPTPEKBW2xxRaxK6lCloF7faohg69okLgrtdj8K0T5pG4KgbvccVaE8kAlSCXDhskmuAKvgAP+6HC6OyBJLFF6Xro7FuQFRKLTKm6xC5itJ+pC5FsInJ7El0FgWV+AjIqE0SsUSsNUHAIn9aHDm3E6DNw6Lt0tcHHZJh16XnCb8XHlGzceL7r1sLjyM/lh+pFPXPkKbthx4YyLDzWJp2J6HiYTbUWbHCmcv6Z4HVe+ceEpHIdLE3NZ9zyEpah800T9Qug4xG3akoeEi7+22zqvi8Eb5IGfnm+2OgiiS/AEwWTDXxvjK7bnUe6V6dc4/MLLvbylTL/luXftWOXhzRcbajlgOZCFAxUxbMlSRhttOWA5UAAOWOVRAKZalJYDtYEDVnnUhlq2ZbQcKAAHrPIoAFMtSsuB2sABqzxqQy3bMloOFIADVnkUgKkWpeVAbeCAVR61oZZtGS0HCsABqzwKwFSL0nKgNnDAKo/aUMu2jJYDBeCAVR4FYKpFaTlQGzhglUdtqGVbRsuBAnDAKo8CMNWitByoDRywyqM21LIto+VAAThglUcBmGpRWg7UBg5Y5VEbatmW0XKgABywyqMATLUoLQdqAwes8qgNtWzLaDlQAA5Y5VEAplqUlgO1gQNWedSGWrZltBwoAAes8igAUy1Ky4HawAGrPGpDLdsyWg4UgANWeRSAqRal5UBt4IBVHrWhlm0ZLQcKwAGrPArA1Cgoc32lTE+nu7Pmnfm4XtYkvgARcOk06m5f3B4RuabzQGWDYuCAffQpBiZaFJYDtZEDtudRgrXu9YUNEyYwsMVtFg+dhQgdBjO5p98Ln+QvtiQ0/QgPGyY4rF0aHLA9j9Koh0Aq0LjkMeZAwLTIavY53wZJb9pp4Dl4pNELbYKfKJV3WLSptGFTWLia5oDtedRwDUgD1MmQMLGlceow4hYY+HW3n+JAt6MO/4vDAI9OG9ygIZFI4ddp0t1m/oJHYMTW4bzC9HjrLi4HbM+juPz2zA2NQhqe3ojErRJxo587Zw7NmzePFi5cSAsWLKC1a9eqdHXr1qUmTZpQ48aNqVmzZtSoUSNq2rQptWzZkrZot6Vq0CZ+T0LyCcTYhXXG3NlzaPny5bRixQpatWqVsleuXEm//vorrVu3TtFSr1492mSTTahNmzbUtm1bRaMaS0HnMB5WP65S8uJNPmTatPFxwCqP+HiZFyavRjJlyhSaOnkKwf5iyuf022+/BeYhOAQICgMKZZddd6e99tqLDjvicFp//fUlOm8b+a1evZrefvMt+vjjj+nzTycSFIVuTJr0OHE3bNiQduyyC3Xp0oV22rmLshEnacUWeGuXBges8iiNenCp+Pnnn2nEiBH0wsjn+Mv9qxsujnwaUv369engQw+n7t27U7sO7QVlTva3M76h4cOH07tvv5lTeiTyKwt6Tn878STq1q0bNW/ePGf8NmFhOVA05eEnKP7F85h0S3aN/dOUZkyYss+f9380bNgweu2Vl4pSiH32O4DOOecc2qrT1pHym/blV/TIQ4Np0qRJkdJFB65SyuWY446j0888Qw1xsuEIw+dsOIoe7ynTHrKvESblFFuLKqqzaMojTKlqmhlhaIwKk61My5cuo/sfuI/efuNtRg2hgcE8trhVQMH+HHTIYXT+hRfQZpttFpjH7Fnf06BBg2jCuDGqUQcCxxyZSKyjo485ni7454XUokWLmLFXFrps8hZnaWNTHr5EJzVrghtDneTSYXoBpJHwlyYZoebNeDwNoyYN2YkJfISXv0mV97mRz9AjDz6k5jLAPxix0yZLC1BoqS8nvyq6vvcNdOSRf+acQF/6ItywoU/Qww8Ocid1C0BOBkqhz4lwlGmzZi3ovAvPo2O5N2LSmIGgjAJQ83XUnyCiU3JjQkG51qlTVwWn882EjNcfm/IIJosLnmABQOvPlE1uME5qVzm4jmCs5RqLrn///v1p1syZiiHFrHDhmay+wF+HJTdRvR4dd8JxdGXPq7iuEEi0etUauvnmm2j82LFcR+skaY3YaBwODVXUeZtt6Yqre9K223WuEVoKmWmaLOgKJenWg1w6VKBHw0oCpOF0E+XvKKzy0Er626oV9MXUr2nBovm09Kef6KfFS2jxTz+q2fltttmGttxyS9qUu8477LADNWzYOP+SlSiGJ4YOoYcHP+j0qJKaVBoyvj7aFonClqCaM6vCvgwohXpUp2otZ16XVzp2pNv730nr/qimK6+6nGbyxKh82dzeEKctGp1MXTpfUl/gHpddSiedfIriU6EaSGErIRj76tWr6IsvvqAF8+fT97Nn0zczZlDTRo1po402og1bt6JWrVpR61ZtaIcunalRw2ZcT5lL/mYOAmOG5+IvmPIAkTBTp04ldM8/fO9D9qW0o1MIwDhdZEdAnS7HrnvsTgcfdCgdctihas+CXmDdDfzlYtasWUO3/ftW+vD995Mk8zAu+TWVMkkjEWVS3LI5QwPUx+abb672kGAvSbHmXoLKWl2nmqoS9ZK0OPICePDtiKOOohtuulElFz4qT5n+wX6Y/73zLn30wXv0ySefqI8MylVFyWEJ8wKb8FxFzm2qQYOGtO8B+9LJJ51S1N5YwZQHNgvdfffd9NmkT6iadUKVo0uSVZpSIghQ3WaPT1m9BvUVQ7qfdio1bdJUdaXLUSYWL15M1/S8mr77doZW6amSQGmwSFBVVT31lU/FFNIlyiKVR6qe9PrR3SnYYrqcxrKO5chRHCJLomS36bw99b3jdv4ity4mWfHlxfX/y6+/0BOPD6VRz4+kP1avcZWGriTkQ+tk7F0ve3Xdly6//HLatG3wBHgcxBdEeWDJ8eFBA9PoSwlmWnAoD3ZKDrjn3sjLiqGQFxgI3c6rr+pJq35dwTmlN9hy+lJKr6jA7MpAH8QjUR5I1KxlC7r7nnuoU6dtM3CUesDXX01jGblC7cYNSyvakxhRpuLHfp6LLr2Mjj/+eAkqiB2r8li2bBndfFNvtdMwbmrBkDsG3E277rpr3Khjx4dOFup23JixdO01PWPHbxF6c6BBgwbUr/9dtOvuu8mcrzdgDYbqyhBuyMh1va52KdLj3cAcHfvvfyBdd/311LhpE3c+JEdUnsniUR7cWhYuWkgXXnAeLV3yo2dG+QVWqy7r+uuxArlzgBKO/PDFndoZhwKrdDOxZfvf//439zXQvUwZ/WuZCrWuXDggDU3nKc+OUJ8+feiAgw40UHp38w2gonrHfDSarr+ul2rY+nxgnERs0a4D3X//QGqxQfw7dWNQHtW0aNESOv+8c2jZjz8lGZFqRHEwQh/y4BzEM6Oe481CG/iiFqHyBShIhAhnNT315JM0aOCDGYpDstWFXcKsnRsHvHi5jufPrrn2ajr22GMZqQwVnfmS3HKJP9X8+fPopBNPpDq8coUyiPEqj8TlamMl84EHB/OhyXg32OXPUd6/cV2va1lxLFNlS/Dyn86MXAusp8OYzsFZpQ5iDbx/kB7t5Jtc3cmIKEqAKA6iRx9+jB4MUBwgB8rNmng4IB8Knad1eYJmwB130chnnkvyGhsQMSVdOubuu+5RiwiYJNeNXg49PBe34Jo7dy71ubVfLigC0+SsPISwAQP608xvpnPr/kNlxFt5nN1ygdlGi1STdarBYXiQoDdff5Xm8PF03egKS3frMIVz4xzGOnp2xDM0dMijvH0itaFKaBG7cDTUXsyQiaqqlCjDX11nLd1/33/ojddeZ8awcuePXOr7XrO8mjx5Mn08HhvvmM5q3l/DBjIetxGZw2rVmLHv0YjhT6k8kW8cJsXxiNhA2CcTPqaXnncOctXhjUaqkniMEZeOdwtv1DqY8czwEYriuBgRsfhp4FAcb77+Fv333ns4nGc5eLOVGKGvuhq9E+lBSay18+EA5AP8FVtwwY99IZCTfrffxpOS4xnG4b/AFMOWukdeunv4U08zPXUV3X4yHi991bReVQN64L4H6IcfflD5xoE/Z+UBZqBinIkeIr7mhd38BeaGLgzJh0BdIARfyk7wUXA+SMZZSlg+eeWTFnz48P2PqG+fW5NfPwip8zXR8YJO/HQh0uOtOzoHwEvwFIo5Uw7WMq+dy4ew4jXl08nRM8gzhU6TuFf+8isrszGMOaXMiiET69b9wTxCm+3LWddwz2PksyPoxx9/VN0tdLnS15pTjMmV/zpDRUgEF/y4hGb611+rIB1WYIplfzbpU7rphn8ZdHjrZKFT7GLRWOn5oGGCp9JAUV5nY1lq/u0q3kcx42seXiNO/a2ZP59++mlGxjrdGZExBKB9Ig/YX07lIRNf3BSH8ZbyAMxg/OpVv9Ew3g0Hg56G9DZSjSIyWoUr6A9wC36H2dU0fbojDIVmvh9ds2d9r5ba/OL9wmuKXj96KiVc5APlMXn8++9rqdfVV9OiBQtrbO4D9M3g8ynoARTa6JvI0D5hxB48MH0DpxMb/W/kVg46cNMV7qgUozdsCSuGjW3fNWWWLl1KV1xxhbqnUxfamqLH5uvPASgSDGGwibHn1VfSbytXeQIXuh5BB86uFMXgFLthRKF+9923PNT+wIiN7s3MISuOarX/XhgNgoQox84BZdY8MwGQPy7aLYaRsjp5VdOaNb9RL95y/tOSRSpIn+kvBj02j2gcQP1BNqFA5qC3eMN1jABD69TwWmCiYY4OjQOSxTDYnCh3fEh+IsfgxXOjnvWd+xA4SednR27pYz4aT8uXpfc6BLlDrLOcKmGFstFgi3W/pShHZ6Kpim7p/W/ufjrzLSif94RdoUpu8UblgDlMmPTxJLrzjrsZTUr83TqOijwkvDTIYt2E5oyMHOVolg3yOvnzqbSAP35eK6MmvF8RU9zzgZBCi/3RmPd54sXZxyBhkhRr1m02bev2RCS8EDby3nDDDd15kELkYeLEmPGB+++j0R++70aB0fiZvHABrKPGOZAwls4TiT/o1ZefV/seikWcNEgc8iyGgVJotbF5slaUCffEuA2P/3A0q0+ZEHGoijIbk1V5SKHFnjj+E24oToZOWApFgteuzzjztGLwRh3zb9++fVEUlRTo5ZdfphFPjXC7g1AYVmkId0rZTg1PILPOPSp1aOB/B/ItaeMKRriXbEBmi2FQzrP/cbrKCnSkt1W02SqaMGliipSkDklaqfAAV6rlBwBJFHZ1Llm6hAmBfpIKcYYpIA4nXvfYfS8BL6iN6/lxelKMV0VJXN42r4tP+Xwyb3nul1Z2lFnyhS3uvPOzCGLhgNNgUqjS/ZDfaup94418z8pMFyiuOgSe9Px4tYPD9thzT8I9NcUwe/PdHrvssovKKrNca3noklo2zozPTmEk5YFttbKfQ3of0GDSiHbbbTdq3WZj2nHHHbPnnCfEwQcfnIbBrKi0yHw8rCfn/DCXl/n4bk8uq25EQMQuGA16ptYdmgNmg/Dy46q/a3peSUuThzrjqkMvPAjjTwwdeOCBocuQKyAe+tpggw3oT7vtoaHQ5ZfPifGqkyhOL3q1hJ5OHZsngB44fVpqkhDhTobSAyHq2LGjAj/znHP1ZGpzilScY6fSpAEaHr1Auhtg3U45NQ1a8KcFxuD5eQUv7115lVqSld6WLNMLTWLHkJ1FUSQOoA6l3rDZ8eprruKNh95LuEJSLjKGNHo65Hlyt+6C0tfW0/gCZUSkmvNZZ52lYtt37OCWU+RXTyZ7pfSwsO5UbiFSzJo1i6dXnIYPJpgFbMUTmDB77LEH4To0MZi8UadtVYVhyBOcLXA7IyOH8ZIPbGx+watn7dq1E/SKDhEENzCiQ/LQk+F5xysuu5IWL5yvB7ubbdICraesOCAbpkA06v7b6TP44iYs4fqbXGRMyTLLs25w4ffe++yXDEr/kIrs63npbh0P3KA9FY97b4j23f9AfmL0Twq09QapRQXZOKbL+my+WDlXE9yKNaxo8ksWLWA14J+k+YapOzZ69eqlbkGvg9OMzDw13FG3daczMlXwVGbqEBlgGRTzK4BxmFSXmjVuRv+8+KIUMLu8cKQBhPBk4qima/mGJ5wYVvSEwGFByocDegMSqvHW7m233sLe9AYt8XHaPXr0oAbqlQAcKE0Z0LXOaGImrbofcpuSzypq0bQFXXPNNS5CtEl8iJGmbrJYuqzPnT3LhY3qMMj0Su6sBKPHsfI3PlzjwVgQB63WsIHziDII3ZCvh+/bvy8rgLWMlO93YiCEY38GiJcfwuAWGxSI36lE57g7qeXhan4WoC+1bt06g1Ckz8cgvaCAjb0cn0/6XKEEPWLyzUfwWLtmOSB1KrZQg5f7Hhz0kPLGWdcmrrZbbE633XYby7rTLkTWkTGft/XMX6dVFALanexjadBgPb6GsT+1SC4Ho0U0Wr+hUkbc6jJ6zGjL330/h6FEWTq2SasixuNPCOWBbBk99yB++3UprUveYC1dIOCEekHPYulyvhCIbVVITvQnnrTp03cAh9V3j6mDMPmJxoQfacQGTodRDnl169Snhk1aqPspd+7yJxcWcGJ0xkpYGBt5wiC96Ij77r2br79/i0Oh+IQW5bR/KowDUv+wHflbR08NG0ovPP9cUgbjKbApn/DvufdedPO/b+fnRZqoNiKNeG3CacRmGrQXR0652dfl3jx/iJ0FjHrUYL316fZ+d9EOO/FiBRosG1g/LVtK9bgL73QBVLD7Zx1fo7Fk4TxtNOG0NzNfN4HhCKE8nBQ8imBq1nNXW2TVBbGS2bKflrqEO5VSTfvxexIPPTaYNmi1ARfA6XVIhXlt65a4xDphYF3adsfONHTY49R1330Yf7InJC3dIS/nv0I7ECDvp598ikY9O4q7emCN06UUmgDjRTPCrSk/DqBepf5h46c2lPGX8R6+6ev9/70XS6F0+XEROt8sOvCQ/enhIY9Rh07tOH/nHph6yQ+0C5t0OPQlP3Z4eIvpR5tq03YTepAvodp9T57nSOJFEsTjLWT1cWdFYxpsYYcCSeoaMzqrPxOjJEkSIQV3eglOgxYQsQGDgv3EL8GJgV8mRrfldzWeGPoknXDCCVS//vpuhQluSaPb0Kybb74l3dLnNhr84MO08cabJqOdnpAOG4ubK+PN19+gwQPvZ3TMbnV5TOY9EUE0x0KHRVI0DkhjTK9TlnH+MuIcTO8br6dPJ05SDZJFXJl02HCkOm3BgE22WLzfvMUWW9CQx5+g63nPycYbb6IavQHteoFL8DVt2pzOPPNMGjJkGHXo0IHpdO7TEWDALeFXGWEL3WILTFX1uuRKooSwrSkgLTTDGfoCZGR6wD5d0wgRbCAOyuXUU0+nC3tcLMEpG8QkmbVy5Uq+gm2CekZvxtdf0TfffEO///57CpZd+x1wEB199NE8I901LbyQHnkmQZgrFVTIPC3umuOA3qCCqMCF2wMHP0Qdt94qCCz3OK1tqEbL7WT06NH00gsv8k196btf8bTEdtttR3jkCvZeXffm1+IauMrEi4h77/kPjeIXG4PMm+/+T73MGATjFRdaeSDx/l152MBfZd2gsUlD69SpEz0yZKhSFKqrJBpDT+Dh/u677+iPP/5Qm1q8JkM9koQK0mnzSuDQmOALUr6iyy/toZRYWKHywleuYbWxzGHrChOTzVtuQIMefog247eUXaM3ejcwfsfihYsI1z9ASbTnPRtRzemnnkZzvv+Ok6Hdpk8bOCODavpo3PioaBW8/7BFQydfY1lN0aJcxYEw9CJ+Sd7zwZ0rHSzQjc1l2267recqSmDCLJGi1DLAUPFsMACaMeNbuuqKy2j1H07vR8rqQNSOv1JmsWtHqUOWkif7li9fSpdedDE/MeJcwaBShhfvkBl5g2HH9radOzuKIym33pBGKMPi/pLZvDcLe6wcReHMg4gSQQoc84DJpe5DKQ9phA0apzIyM4MfcOPGj1HEFIm3Kq/IfxRxfBMZD5su52EWNoPpE8Bm2SLjL9MEqD+nrvGFSl3iXKbFiYVsRxaqaAkfX7/s4h60ePFCxpve+0ZGIjNix5K54E02Jp6J8UWbkS+n+eijD3iCH2sMzubKVGLuc6tJnGpq3LipCpY2noLJ7gqlPARN08aN3YxSgubEYhUCBD0zYmToCRekRBopuNgOxvj+uix3HdxLmv4tXXbpFYQ5GOSrM093x0dFaWIyyyoT4/IkAKjW68Ws99IsVVxUiZJYq5QpHmrqceHFrEB4VVEzuvyY/NTAcnLq+HS3iUzi9Lp6fsRz7gay1MeRFwHcdlDFWyAaKFR6OhO3nz+88mDtpe8gBUJkKJmK/c230+lLftzZNBJvhqPQUnCxTZh8/cIs0dy4yOeKyy7hu1hXKPqh+GRtPd+8yi29Uy+pVSXnESLpeTjigXrB6gMM4P3qstzKHkSvIzPSPOpxI3SGtQsW/x/3QM53VhaTjdDhj9sig9DmHBcWu7ShiRM/pu/mznS3Fkg4hiyprfnVtEHLNkxTqv6jECjcyZ6Gx03tt2yndpLqwEKU2FguGj7iKZayFBSEDfE1JnTJbh9omDhxIlf+pfTLL+hxOG9ngC7Z1eeWI0V+xbpSZXV6jSgoeh677LYL7b7X7mn1VduGMakGxt1+9YhXUpHyHpD58xbRBeedT9/zfILIeYqX8YqLtJmkCIdDzm1v+LCneSjO+5T4ow8jbdBE0HGrLTkovBrQ00dK1WGrjmlzAzoiKSQ2noz+4EP6TLtiXhgrtp5OdwsOPSwfN/ApnElF9torr9KVl17C69q4hBbaNhmhZeJ027WACnaCN2adbM/XKfTnpxr79utPXZJ3QVQwCwKLBvHAT55xADD4hT1AOCz5T37Y3ZFzmUNw0MUpx2b9BBEssv7hBx/QJ59+wh96pou1joi5SRf8HTtsHYQyMC6S8sCqCAoTpkD9+kV/GzMM3sDSGJEurczA/957H93Rt08a7TozhcFx02CQVHJenQc47XnPPffwga31eTNffRowYAAhTIwOK2GVakMO0PD0xoey6jxYtWqVWuJ/6aVXHKXCjRGmpmQI+f7GNN3D9VbFW9xlnsMsg9AI+FyWf1Uh+U845ZHs+mAXG5inM1AQmfZCnlwaPFB7kDrzI28myc0fgBd0/vLLL3yRzzX86HHwRhkwuJINBEUUZHo5HRHYfscu9J/7H6CGyRU1wECJIAxx4KXX0MUbZ3oO5ejTZTybbOCGuQf+i53J8RudjjDY77vvPt4X8iODpjdtvQyQBTFyB4/4o9jpOfil5PkOFKJZs2aEjWCm0YmRwiLs6SefTD40zBpbBodGYgUfoAAEXPCKH8MOZfB1YNq8DF5zO/WU7nxP5WiOzm1SyAtvOYaBR7oAoQxOw6+m3fi2qXv/ex8v2zmraXr5EPaf++7lKx/35OBU91zh88Cpp61N7hFPP0lnnn4Gb8ianVZsb9mUVZw0UE+P3rY8AThQ8sD7za+94rwd7QeLcKfu1tH2fIhu/fWdk/BB8H5x4ZQHp0YhkKlziUlqgg2I9XkCKaxToGp+w7UPTfxkgm9XTsGnFKEfnR7pU6SjEeCIkGP4XRXe8HXvf+5WKyrLlRZGTDrNSeCKt6Q+0gsK3lWpE9L788Uxd7NywDDFWwWTioMC6brv/sneh5PeG3dKmNPzrGQfn27lFbvZs2bS6aeeQs8+M1zxEvx0eCSyKTxwZNdpxH5cF9hMW9JJSszdvf/eu9z7uTcT2CekDh9y3aerXEiUDuS03fQwL1+qBXrEmkjACHWy1fiK+wmRg3It9byiJx9xfxctPGlSzDTzEAjd9oNBOP/nBR7uUqtTsERjR0+gs7qfRs+PfN7VyE76VJ467kp1O7xxhpipoYVz0xSuGsDS6yGHHkS39uvrskDg3GpKxkj99ut/Bx1w8AEcil7cuuTKm8NXSYskAp9MXtEWyoqnHERGYd9/7/10Be8h+n7WbKfsSjYz5Q9phVdSX8IswSd+2BIm6YTno0a+SL1v6M0Q6b1rgddxiBv1v+/+mcoDdS80CayfHfJsCwqe0jPH/PkvasuuiRTEymYxPQ6EYv/ASaecRBf3uFyPSnMjfVjCTdiPJ4zh04VDadoXU/mYsXO/iNcY3Y/GNEIqyAN+Ons0UvWHuvwzHzy89l987R5LC4aU2fiu8/u2f99Kb7/5JqeBqDlCDXfqUuwKYmCoooC3SSWa5Dc60yyFfOT+YDrz7DP41Os26sCGzkfdLdm4YQ5r/etG1ds66sMXCr3z5htJxYLe9Tqul9TuYODzapOt22xKI0c5d5a4eSqaWXkIMVnskMojHcvgQQ/Q08OeTA/09UEb1lVDG9gdtu6gdnbKHYuSTC+AhPnaYGxyrmPs6DE09IkhNGPaDA7kvKDl1V7+9PF5tsbhm1cFRODiJnfmnYXp5O6nUI9LLkmWTFcqYQrrNJK7eUb/hef43hNuLDB6HmGwVBKMl+zK8q405v3224dO4VPnuKzHG95Q4EkZ1/mkpxvz0WhekBhIc+fOTeJL9jKT9aGn83Kfe8H5/MbS2V5RocOyKg+dYMGKa+qPO+Zo8YaydTwQtP32PYAOO+ww2m2P3alZ02bh1B0zFEtRY8eOpQkTJtAHvJ79e/LGa+cLC447X0LYIthw1zaj8wNll8bd85pr6ZjjjvVkh15HngBGICboMM4W3FHTG+jK1muWW3gv4egJYxMi/BtssBEddMgh1LVrV3VRuPOhC1f0n3/+mT7mY/qvvvQyfTYl9QwKUpt5Ii+9xyG0ABbzWy/wnqemTZsqmiQ97Cgmq/LwRMZtdED/fvTSS+kzuzqB6NGas/tO18750umwHfiuhM023ZxatWpFG/Hdp7DxlCSYtWTJEnU6cPHixco9ld+OcYz3GBJ4xSjlwcvMmXQIRO2x8a7vbf3uoC5dumQUWq8LNxJsdDoVbpCXY9KkSXQTD3+K9vq7FxElEAYe4pS2yJonT9Po5HMlfFfIDjvtpK6igLzjh7dWUFe4WAuyj2ch8Js3bx7NmvlNGgZ4zHwzADwCunfvzvfucM8zZB17oFBBuSkPTvrDnLl0SveT1WYU6aJJJqIFxW/t+Dng97X3Elosr9/e/87YrzyQUi1YsEDtpcG9Ecg/m8HOx6rkBHc2WBsfDwf0NvkCb2rbsNVGeSOOOuB1M9x8yy3ouL8eo7pLMnEmkWEESGCtnRsHZA5D9a4UCpmwS2+8f+UhyiOPDy2Y4kDWm2yyCT366KPqPR34nfrP7BkiDsYqDocPhfwLuUjJBueU3Oh56ulnxqI4QHvOPQ8k/nnZcjr5xBPTXlNDuDXF5YCz0sGjat6SnEhenotxba/rrqPDjji8KMRIj+flF1+iu/j6f2eIinUd3NyN8Y9zrN1+WIpSHVomUOJ8yTHPIzRr1oJGvvB8XhvDNMRct3mYZi2a09nnYsY2/YkCCIw1xeOAGjZyHTiPBVXz/Zad6LGhj7mKoxgNVr5ymIxF3u3abcEMqKa1OJHK+yCgRpwl4+LxxeYExYEmjn09deiiSy+OTXGAt3n1PGS+5Yzup9KcOd8nl2Ot4gBji2uSXxeuEFxAfQpPiGXqb0eQpIdQcPqYlocfeoie5CGTM4koggzbmuJyoEpNzA4crJ01i4GAvJQHxlEQjHnzf8/7JdIAAApPSURBVKDzeM0Y1/nJBq0YaLMoQnBAhgU7dNmB/nX9jdS27aYqlUxiS69DegYhUOYFklJOjpKYxbss8YTjzBkzk8OqvNDbxJE5UMUrOC3o0aFPqJUcJI9LFvJTHlpBxo0bR9f2vEqFyEqAFm2dMXMAAoCG2qQJ3u69mP567DEqB+kNxpydLzpTOaWUBwYtzvIlEuO8x6MPPcofmJW+uGxEYTgwiN892n7HHWJHHpvyAGWPPfowPf7oY7ETaRF6c+DgQw+ny6+8glq0aJEGIA1Y7LTIAnr0/HS3ZIm9OgPuvIsm8IfGzn8IVwppV9FVva6hY49NbgqM+csSq/IAG+4ZcDe9MGoUu1JjW/lKFpJN5Yxb54/uRplMP8LwfshVva7lo/S7wVsWRlcmH330Ed074C61CQrE63FlUZgaINKUA/TusWtV7V7lpiab01K9/io6/8IL6bQzTi8YtbErD8yD9OeluldeeiFtbCUCAiaggLgOXozJGAmvLbbwBpunMDsuezjM8mNH4hln/YNOPe20tAlRSW/Cl7IfrwQOHfI4DRs6JEmmU/ZgmnmGRx3AS8lOMHzlxep1LW5pT2hHYs6/8CI67XRWHMkggZX4OOz4lQeo4rrtf8cd9OrLLye/KrW3srNVEioVj/KkFAaW1pyGhDi+JoJ5WIcOPuxguqTHZbFt8MlGV7Hi58+fTwPu6k8TJ0zU9qmg/DDCC8dn/2bjAPhFdPY559DZZ5/N7Espk2wpc4mPRXn4abUXnn+O/sPDmNT4VoTBKaQQLD0PPzwCV1l26kuLc0DYSOXs1HUajvMVqaK9992HzrvgXOrQno90iyxAF4u7jJmCCVVsbIOS+HraVHrggUH0xeTP3YN2KBoUpxj9oJeE1QYbl22h7LrRz46p3hhL0PqNmtJNN91E+/Kh02LIRyzKQwrl1fjxnOP11/1L3Tatdzl1WOluIaw2GVGaus1yQnV5l+guu+/BqygX0dZb86XTkITkkMaPPzo//WBKIdyXTq567oPRpE8m0mOPPELTpk1L7htKyYRv2lIoWMw0iEwEoYVihU5Zx/bW7TtQnzvvpE03xTssULrpR/xNfxDesHF5Kw8QBSMKID1j56uCS4hxe/kbr72W/LqmQ9VWH3inf03hP/yoI+nEk7rRNvx2b+qb6/AxmNflx0WUR8kNRMhQjp9OnEQjn3uGxvK9FdKQvGWs/ModhWKXR76JqviekFPVh8YBcWTFFzzGiLyVhxctfgWe8vlk9fwBjhd7GRESr7hKDQOvmjdvSUcfcwydePJJ6lh29rIWT0Cy05I/hNIdJppkIGTlmRFP01uvv0Wrk3e3cCee/4EHtddgknSbrbamG3vfQu06tK8RRhREeWQryRDeCzL8qWEsDKvd7pWfwsmGq5zjt9xySzr+7yfRX/56tLqgJaMsnq0qAyotoNz4GLaIK1as4An4V2jUyGfcJd60gleoR+pTPqywcd/H2eecR3874Xin1MxEDPmK3TOrEeWBEmMo8xRfZQhhWLNmTeiqF2Yige4OjUADDJveC84rDKilAhEvRipe/PsfeDD9/aQTaeedd5YgawdwwOQ19ok8z1cgfjbpk4BUTpSZVhJInfjGo0FiqilpS7o4bMlbbOAMk0/Tps2pOy/Tn8gn2euv7zxQHQc9ueKoMeUhBC9btkwpkZd5WXe1egZSYhwblZu+lJkeL8uaZqjpN4UEFeeczZFLY9nPJhOO8+c3bZ2Tw+kz3l7wCBMj91dCMDpusy0dfvjhdATPabRs2VKBmHlJOmuH4wCWed947XV6483X6McFi3jiEPflOvUYDoMDJfUEn1edpBq5nAx29psgXFZCkA7GDHPSOpcSCwzgzHxkcxfCcV4JiktgmrVsQSed2E0pDf1RLuCpSVPjykMKj97Hm3wj96iRz9Hsmd95rFEXZoybEoxUZUmlCW2ioAALg3gYKAWspSt4vhlLLT0mYbAEuWnbzWn/Aw+ko/7yZ8IQRdKrxPZPrBz44osv6M3X36AP33+fVqxYjopx8TtfdUd+vL/wqQ+IyIPIgNhmOJBLHNwSD7duMsNBF0sKyxDidOOEOTefw70TX1F4/N//ToccdqhKgzJ5pdNxFNNdEsrDZMjnn02iD/73Hr377rtqeAMmr02spXq8hAlY0dK4jR1+mNQpUmj59ErxYijS6SsdAmPS4lQ+8OFOBKfCJU/EqZzYxhIrDCocl9vuxfsz8DyneQ0+YMLQB7jabITX/jwAw1MKAnBOmgR9yYpk/Jix6qLsWbNmJVE4VxI50pIMYgu37ePhal2WEOvUe/Ijoeo31asxaQMseiBmvTo4HXkUmZEPkWPz36SoOpsEq2jD1q3o0EMPpSOPPJI6duTXGbOLcqowRXbVqPIwK0HKjipTPGPHhPEf0zvvvEOTJ02kxT8uURWU+nqkNHhqD0lKoHT8ujBIPo7tfAkkzIQDDmeXJ58k4IxTSopvZmrSlLbZfjvei7E1de68PeE5iWbNmjioREpVQUCncy2cWzbJMGkLrWIb0darcQA8UiapvB2eIYzrMqlTAMLRNH/+Qpo6eQrNmPE1ffvttzRz+gxatfo3F5s0eNnIKPVv1oOES0LdD1ivD5EQI7gc+UHPIqX4IMtt27alXffci69xPITnwXaSLFxb0rsBJeKoUeXhxQN/RlXTokWLaNpXX9GUqVPp26+nE74qeKkcBl9+VI5p9IqVCoetG/2rIfnrMGj4rVtvRFt12pY6bbMV/7ahTqwwWm+8sYvGGam6XuXAE5i8jSc9kH2gMp2CDBAbkAMHnLoDd9N57vAbDdYxc+fMoZkzZ9L06dPp22++o2+mT6PlK37lzXlOz1KXB6QQuUkm9/SbaRwaREmk8sbt6O3bt6fOO2xP22/Pvx12ME5Fp9MueZaiXXLKIyqT8IbMHBaG2bNn0yK+xRvHvnFV/ZIli5T7jz+cpwBFGZiCgPw22qi1Wv5q2bI5teB3NVrz8w/NeVITV+HjGYit+KGqpnz/o/7FyEanKKFscBIfFV7SVbIdmif5aONk2oXzF3AvZb76QC1dupRfmnd+mND/mX/Lean4J5Yp04BGGJGvRo0aKZlxng9pRRvzB6bNppsqhdGuXTtq3DTZM9UQhS6nlqYUnGWhPPKRDWFyaVWQfJGEOhmvO5OvCBVhTEHUbldm/WXysHZzqPilLwvlUXy22BwtBywHsnGgfAZY2Upi4y0HLAeKygGrPIrKbpuZ5UDlcMAqj8qpS1sSy4GicsAqj6Ky22ZmOVA5HLDKo3Lq0pbEcqCoHLDKo6jstplZDlQOB6zyqJy6tCWxHCgqB6zyKCq7bWaWA5XDAas8KqcubUksB4rKAas8ispum5nlQOVwwCqPyqlLWxLLgaJywCqPorLbZmY5UDkcsMqjcurSlsRyoKgcsMqjqOy2mVkOVA4HrPKonLq0JbEcKCoHrPIoKrttZpYDlcMBqzwqpy5tSSwHisoBqzyKym6bmeVA5XDAKo/KqUtbEsuBonLg/wGv1A4Rp2f9PQAAAABJRU5ErkJggg=="
+            width="70">
+          <p style="font-size:13px;"><strong>J</strong>avascript e<strong>x</strong>ports <strong>B</strong>rowser</p>
+        </p>
+        <p style="font-size:15px;"> Documents</p>
+        <hr>
+        <p>
+          <a href="#install">
+            <h2>Install</h2>
+          </a>
+          <br>
+          <a href="#usage">
+            <h2>Usage</h2>
+          </a>
+          <br>
+          <a href="#get-started">
+            <h2>Get Started</h2>
+          </a>
+          <br>
+          <a href="#1-create-an-instance">
+            <h4>1. Create an instance</h4>
+          </a>
+          <br>
+          <a href="#2-add-html-document-with-the-same-method-as-tag-name">
+            <h4>2. Add HTML document with the same method as tag name</h4>
+          </a>
+          <br>
+          <a href="#3-output-to-browser">
+            <h4>3. Output to Browser</h4>
+          </a>
+          <br>
+          <a href="#tips">
+            <h2>tips</h2>
+          </a>
+          <br>
+          <a href="#table">
+            <h3>table</h3>
+          </a>
+          <br>
+          <a href="#-">
+            <h4>行に色を付ける</h4>
+          </a>
+          <br>
+          <a href="#-">
+            <h4>行に色を付ける(条件分岐)</h4>
+          </a>
+          <br>
+          <a href="#-">
+            <h4>セルに色を付ける</h4>
+          </a>
+          <br>
+          <a href="#-">
+            <h4>セルに色を付ける(条件分岐)</h4>
+          </a>
+          <br>
+          <a href="#object-array-">
+            <h4>objectをarrayに変換する</h4>
+          </a>
+          <br>
+          <a href="#css">
+            <h2>css</h2>
+          </a>
+          <br>
+          <a href="#template-">
+            <h3>templateを読み込む</h3>
+          </a>
+          <br>
+          <a href="#css-">
+            <h3>cssを書きこむ</h3>
+          </a>
+          <br>
+          <a href="#css-">
+            <h3>cssを読み込む</h3>
+          </a>
+          <br>
+          <a href="#cdn-">
+            <h3>cdnを読み込む</h3>
+          </a>
+          <br>
+          <a href="#-css-">
+            <h3>複数のcssを設定する</h3>
+          </a>
+          <br>
+          <a href="#constructor-title-css-option-">
+            <h2>constructor([title,css,option])</h2>
+          </a>
+          <br>
+          <a href="#title-string">
+            <h3>title: string</h3>
+          </a>
+          <br>
+          <a href="#example">
+            <h4>example</h4>
+          </a>
+          <br>
+          <a href="#css-array">
+            <h3>css: array</h3>
+          </a>
+          <br>
+          <a href="#example">
+            <h4>example</h4>
+          </a>
+          <br>
+          <a href="#example">
+            <h4>example</h4>
+          </a>
+          <br>
+          <a href="#example">
+            <h4>example</h4>
+          </a>
+          <br>
+          <a href="#example">
+            <h4>example</h4>
+          </a>
+          <br>
+          <a href="#option-object">
+            <h3>option: object</h3>
+          </a>
+          <br>
+          <a href="#sidebar">
+            <h4>sidebar</h4>
+          </a>
+          <br>
+          <a href="#example">
+            <h4>example</h4>
+          </a>
+        </p>
+      </aside>
 
-a {
-  color: #4183C4; }
-a.absent {
-  color: #cc0000; }
-a.anchor {
-  display: block;
-  padding-left: 30px;
-  margin-left: -30px;
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0; }
-
-h1, h2, h3, h4, h5, h6 {
-  margin: 20px 0 10px;
-  padding: 0;
-  font-weight: bold;
-  -webkit-font-smoothing: antialiased;
-  cursor: text;
-  position: relative; }
-
-h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
-  background: url("../../images/modules/styleguide/para.png") no-repeat 10px center;
-  text-decoration: none; }
-
-h1 tt, h1 code {
-  font-size: inherit; }
-
-h2 tt, h2 code {
-  font-size: inherit; }
-
-h3 tt, h3 code {
-  font-size: inherit; }
-
-h4 tt, h4 code {
-  font-size: inherit; }
-
-h5 tt, h5 code {
-  font-size: inherit; }
-
-h6 tt, h6 code {
-  font-size: inherit; }
-
-h1 {
-  font-size: 28px;
-  color: black; }
-
-h2 {
-  font-size: 24px;
-  border-bottom: 1px solid #cccccc;
-  color: black; }
-
-h3 {
-  font-size: 18px; }
-
-h4 {
-  font-size: 16px; }
-
-h5 {
-  font-size: 14px; }
-
-h6 {
-  color: #777777;
-  font-size: 14px; }
-
-p, blockquote, ul, ol, dl, li, table, pre {
-  margin: 15px 0; }
-
-hr {
-  /*background: transparent url("../image/dirty-shade.png") repeat-x 0 0;*/
-  border: 1 none;
-  color: #cccccc;
-  height: 4px;
-  padding: 0; }
-
-body > h2:first-child {
-  margin-top: 0;
-  padding-top: 0; }
-body > h1:first-child {
-  margin-top: 0;
-  padding-top: 0; }
-  body > h1:first-child + h2 {
-    margin-top: 0;
-    padding-top: 0; }
-body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
-  margin-top: 0;
-  padding-top: 0; }
-
-a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
-  margin-top: 0;
-  padding-top: 0; }
-
-h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
-  margin-top: 0; }
-
-li p.first {
-  display: inline-block; }
-
-ul, ol {
-  padding-left: 30px; }
-
-ul :first-child, ol :first-child {
-  margin-top: 0; }
-
-ul :last-child, ol :last-child {
-  margin-bottom: 0; }
-
-dl {
-  padding: 0; }
-  dl dt {
-    font-size: 14px;
-    font-weight: bold;
-    font-style: italic;
-    padding: 0;
-    margin: 15px 0 5px; }
-    dl dt:first-child {
-      padding: 0; }
-    dl dt > :first-child {
-      margin-top: 0; }
-    dl dt > :last-child {
-      margin-bottom: 0; }
-  dl dd {
-    margin: 0 0 15px;
-    padding: 0 15px; }
-    dl dd > :first-child {
-      margin-top: 0; }
-    dl dd > :last-child {
-      margin-bottom: 0; }
-
-blockquote {
-  border-left: 4px solid #dddddd;
-  padding: 0 15px;
-  color: #777777; }
-  blockquote > :first-child {
-    margin-top: 0; }
-  blockquote > :last-child {
-    margin-bottom: 0; }
-
-table {
-  padding: 0; }
-  table tr {
-    border-top: 1px solid #cccccc;
-    background-color: white;
-    margin: 0;
-    padding: 0; }
-    table tr:nth-child(2n) {
-      background-color: #f8f8f8; }
-    table tr th {
-      font-weight: bold;
-      border: 1px solid #cccccc;
-      text-align: left;
-      margin: 0;
-      padding: 6px 13px; }
-    table tr td {
-      border: 1px solid #cccccc;
-      text-align: left;
-      margin: 0;
-      padding: 6px 13px; }
-    table tr th :first-child, table tr td :first-child {
-      margin-top: 0; }
-    table tr th :last-child, table tr td :last-child {
-      margin-bottom: 0; }
-
-img {
-  max-width: 100%; }
-
-span.frame {
-  display: block;
-  overflow: hidden; }
-  span.frame > span {
-    border: 1px solid #dddddd;
-    display: block;
-    float: left;
-    overflow: hidden;
-    margin: 13px 0 0;
-    padding: 7px;
-    width: auto; }
-  span.frame span img {
-    display: block;
-    float: left; }
-  span.frame span span {
-    clear: both;
-    color: #333333;
-    display: block;
-    padding: 5px 0 0; }
-span.align-center {
-  display: block;
-  overflow: hidden;
-  clear: both; }
-  span.align-center > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px auto 0;
-    text-align: center; }
-  span.align-center span img {
-    margin: 0 auto;
-    text-align: center; }
-span.align-right {
-  display: block;
-  overflow: hidden;
-  clear: both; }
-  span.align-right > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px 0 0;
-    text-align: right; }
-  span.align-right span img {
-    margin: 0;
-    text-align: right; }
-span.float-left {
-  display: block;
-  margin-right: 13px;
-  overflow: hidden;
-  float: left; }
-  span.float-left span {
-    margin: 13px 0 0; }
-span.float-right {
-  display: block;
-  margin-left: 13px;
-  overflow: hidden;
-  float: right; }
-  span.float-right > span {
-    display: block;
-    overflow: hidden;
-    margin: 13px auto 0;
-    text-align: right; }
-
-code, tt {
-  margin: 0 2px;
-  padding: 0 5px;
-  white-space: nowrap;
-  border: 1px solid #eaeaea;
-  background-color: #f8f8f8;
-  border-radius: 3px; }
-
-pre code {
-  margin: 0;
-  padding: 0;
-  white-space: pre;
-  border: none;
-  background: transparent; }
-
-.highlight pre {
-  background-color: #f8f8f8;
-  border: 1px solid #cccccc;
-  font-size: 13px;
-  line-height: 19px;
-  overflow: auto;
-  padding: 6px 10px;
-  border-radius: 3px; }
-
-pre {
-  background-color: #f8f8f8;
-  border: 1px solid #cccccc;
-  font-size: 13px;
-  line-height: 19px;
-  overflow: auto;
-  padding: 6px 10px;
-  border-radius: 3px; }
-  pre code, pre tt {
-    background-color: transparent;
-    border: none; }
-</style>
-
-</head>
-<body>
-<h1 style="border-top:0px;border-right:0px;border-bottom:0px;border-left:0px;background:linear-gradient(transparent 70%, silver 70%);text-shadow:0 0 2px silver;" id="header_main">jxb document</h1>
-
-<p><ul style="padding:0;position:relative;"><li style="border-top:0px;border-right:0px;border-bottom:3px double silver;border-left:0px;line-height:1.5;margin:0;padding:0.5em 0.5em 0.5em 1.7em;list-style-type:none!important;"><a href="api.html">api</a></li><li style="border-top:0px;border-right:0px;border-bottom:3px double silver;border-left:0px;line-height:1.5;margin:0;padding:0.5em 0.5em 0.5em 1.7em;list-style-type:none!important;"><a href="index.html">index</a></li><li style="border-top:0px;border-right:0px;border-bottom:3px double silver;border-left:0px;line-height:1.5;margin:0;padding:0.5em 0.5em 0.5em 1.7em;list-style-type:none!important;"><a href="table.html">table</a></li><li style="border-top:0px;border-right:0px;border-bottom:3px double silver;border-left:0px;line-height:1.5;margin:0;padding:0.5em 0.5em 0.5em 1.7em;list-style-type:none!important;"><a href="">index2</a></li></ul><h2>overview</h2></p>
-<h3>インスタンスの作成</h3>
-
-<p>new jxb()で新しいインスタンスを作成します</p>
-
-<pre>note = new jxb()</pre>
-
-<h3>タグの挿入</h3>
-
-<p>インスタンスにはタグ名のメソッドがあります。例えばPタグを挿入する場合は以下のように行います</p>
-
-<pre>note = new jxb()
-note.p('pタグが生成されます')</pre>
-
-<h3>出力</h3>
-
-<p>タグ等を追加したインスタンスをhtmlとして出力します。</p>
-
-<pre>note = new jxb()
-note.p('pタグが生成されます')
-.open()</pre>
-
-<p>openメソッドはインスタンスの内容をhtmlに変換、fileに保存、ブラウザで開くという一連の動作を行います。他に以下のメソッドがあります。</p>
-
-<h2>tags</h2>
-
-<p>HTMLのタグに相当するメソッドです。</p>
-
-<h3>arguments</h3>
-
-<p>jxbのMethodには多彩なoptionがあります。例えばpre関数は第一引数が必須となり、他はoptionです。</p>
-<p>この関数に以下の様な引数を渡してみましょう。</p>
-<pre style="white-space:pre-wrap;">jxb.pre(
-  &#x27;paragraph &#x3C;hr/&#x3E; &#x27;,
-  &#x27;gold&#x27;,
-  &#x27;gray&#x27;,
-  {id:&#x27;testId&#x27;},
-  {class:&#x27;testClass&#x27;},
-  true
-)</pre>
-
-<p>出力されるhtmlはブラウザでの表示は以下になります。</p>
-
-<pre style="white-space:pre-wrap;">&#x3C;pre style=&#x22;color:gold;background-color:gray;&#x22; id=&#x22;testId&#x22; class=&#x22;testClass&#x22;&#x3E;paragraph &#x26;lt;hr/&#x26;gt; &#x3C;/pre&#x3E;</pre>
-
-<pre style="color:gold;background-color:gray;" id="testId" class="testClass">paragraph &#x3C;hr/&#x3E; </pre>
-
-<p>この場合の引数は以下の６つを与えていることになります。</p>
-
-<pre>[
-  'children (string)'
-  'color (string)'
-  'background-color (string)'
-  'attributes (object)'
-  'attributes (object)'
-  'character reference (boolean)'
+      <!-- Main Content -->
+      <main id="main-content">
+        <h1 id="jxb">jxb</h1>
+        <p><strong>J</strong>avascript e<strong>x</strong>ports <strong>B</strong>rowser</p>
+        <h2 id="install">Install</h2>
+        <pre><code>npm install jxb --save
+</code></pre>
+        <p>or</p>
+        <pre><code>yarn add jxb
+</code></pre>
+        <h2 id="usage">Usage</h2>
+        <pre><code>var note = new jxb();
+note.h1(&#39;title&#39;).h2(&#39;sub title&#39;).list([&#39;one&#39;,&#39;two&#39;,&#39;three&#39;]).toBrowser()
+</code></pre>
+        <p>result: open in Browser</p>
+        <blockquote>
+          <p>
+            <img src="https://gist.githubusercontent.com/mick-whats/ac53592e9c23646776020c164af1fdb7/raw/b4ca8f509ec1ae8279fea9a6c8fd36883e31879d/jxb_ss_01.png" alt="">
+          </p>
+        </blockquote>
+        <hr>
+        <h2 id="get-started">Get Started</h2>
+        <p>jxbを使うとjavascriptだけでhtmlを書くことができます。
+          <br>CSSはheadタグ内に自動で直書きされるので別途用意する必要はありません。</p>
+        <p>大まかな流れは3stepです。</p>
+        <ol>
+          <li>インスタンスをnewする</li>
+          <li>タグ名と同じMethodでHTMLドキュメントを追記していく</li>
+          <li>toBrowser()でBrowserに出力する</li>
+        </ol>
+        <p>例1</p>
+        <pre><code>var note = new jxb();
+note.h1(&#39;title&#39;).h2(&#39;sub title&#39;).list([&#39;one&#39;,&#39;two&#39;,&#39;three&#39;]).toBrowser()
+</code></pre>
+        <hr>
+        <p>ここで簡単に各機能を解説します。</p>
+        <h4 id="1-create-an-instance">1. Create an instance</h4>
+        <pre><code>var note = new jxb();
+</code></pre>
+        <p>いわゆるコンストラクタです。 例1では引数なしですが、自動でgithubフレーバーCSSが適用されています。
+        </p>
+        <p>数種類のCSSが使えたり、ドキュメントのtitle設定、サイドバーの設定などがコンストラクタから行えます。</p>
+        <h4 id="2-add-html-document-with-the-same-method-as-tag-name">2. Add HTML document with the same method as tag name</h4>
+        <pre><code>note.h1(&#39;title&#39;).h2(&#39;sub title&#39;).list([&#39;one&#39;,&#39;two&#39;,&#39;three&#39;])
+</code></pre>
+        <p>h1-h6, a, p, img, hr, brなどの主要なタグに対応しています。ListやTableは配列で要素を指定しますので、javascriptらしい記法で追加していくことができます。</p>
+        <h4 id="3-output-to-browser">3. Output to Browser</h4>
+        <pre><code>note.toBrowser()
+</code></pre>
+        <p><code>toBrowser()</code>は実行すると自動でBrowserが開くMethodです。他にもhtmlに変換するだけの<code>toHtml()</code>やfileに書き込む<code>toFile()</code>があります。</p>
+        <h2 id="tips">tips</h2>
+        <h3 id="table">table</h3>
+        <h4 id="-">行に色を付ける</h4>
+        <p>data行にstyleオブジェクトを入れると行に適用されます。</p>
+        <p><strong>sample code</strong></p>
+        <pre><code>var data, note;
+data = [
+  [&#39;name&#39;, &#39;age&#39;, &#39;score&#39;],
+  [&#39;ann&#39;, 16, 98, {style: {color: &#39;red&#39;}}],
+  [&#39;bob&#39;, 22, 76]
+];
+note = new jxb();
+note.table(data);
+note.toBrowser();
+</code></pre>
+        <p><strong>result</strong></p>
+        <table>
+          <tr>
+            <td>name</td>
+            <td>age</td>
+            <td>score</td>
+          </tr>
+          <tr style="color:red;">
+            <td>ann</td>
+            <td>16</td>
+            <td>98</td>
+          </tr>
+          <tr>
+            <td>bob</td>
+            <td>22</td>
+            <td>76</td>
+          </tr>
+        </table>
+        <h4 id="-">行に色を付ける(条件分岐)</h4>
+        <p><strong>sample code</strong></p>
+        <pre><code>data = [
+  [&#39;name&#39;,&#39;age&#39;,&#39;score&#39;],
+  [&#39;ann&#39;,16,98],
+  [&#39;bob&#39;,22,76]
 ]
-</pre>
-
-<p>次は<code>id=&quot;testId&quot;</code>だけを設定してみましょう。どのような引数を設定すればいいのでしょうか。</p>
-
-<pre style="white-space:pre-wrap;">jxb.pre(
-  &#x27;paragraph&#x27;,
-  {id:&#x27;testId&#x27;},
-)</pre>
-
-<p>これだけです。<code>gold</code>等と指定してあった場所に<code>null</code>を置く必要はありません。ポイントは<strong>引数は型によって判定される</strong>ということです。また<strong>引数の型が違うなら順番は問いません</strong></p>
-<p>それでは最初の例をもう１度、引数の順番を変えて実行してみます。<pre style="white-space:pre-wrap;">jxb.pre(
-  &#x27;paragraph &#x3C;hr/&#x3E; &#x27;,
-  &#x27;gold&#x27;,
-  true,
-  {id:&#x27;testId&#x27;},
-  {class:&#x27;testClass&#x27;},
-  &#x27;gray&#x27;
-)</pre></p>
-<p>出力されるhtmlは全く同じになります。</p>
-
-<pre style="white-space:pre-wrap;">&#x3C;pre style=&#x22;color:gold;background-color:gray;&#x22; id=&#x22;testId&#x22; class=&#x22;testClass&#x22;&#x3E;paragraph &#x26;lt;hr/&#x26;gt; &#x3C;/pre&#x3E;</pre>
-
-<pre style="color:gold;background-color:gray;" id="testId" class="testClass">paragraph &#x3C;hr/&#x3E; </pre>
-
-<p><ul style="padding:0;position:relative;"><li>必須の引数は第一引数のchildrenだけで他はoptional</li><li>型によって引数が判定される</li><li>異なる型なら引数の順番は問わない</li></ul></p>
-<h3 style="border-top:0px;border-right:0px;border-bottom:0px;border-left:4px solid silver;padding:0 15px;" id="opt_color">color(string)</h3>
-
-<p>colorオプションはタグのstyle.color属性に変換します。</p>
-
-<h5>example</h5>
-
-<pre>"black","gold" // style="color:black;
-"#222"  // style="color:#222;</pre>
-
-<h3 style="border-top:0px;border-right:0px;border-bottom:0px;border-left:4px solid silver;padding:0 15px;" id="opt_backcolor">background-color(string)</h3>
-
-<p>background-colorオプションはタグのstyle.background-color属性に変換します。colorオプションとセットで使います。background-colorのみを設定したい場合はcolorオプションを空文字列にします。</p>
-
-<h5>example</h5>
-
-<pre>"black" ,"gray" // style="color:black;background-color:gray;
-"" ,"gray" // style="background-color:gray;</pre>
-
-<h3 style="border-top:0px;border-right:0px;border-bottom:0px;border-left:4px solid silver;padding:0 15px;" id="opt_attr">attributes(object)</h3>
-
-<p>attributesオプションは属性に変換されます</p>
-
-<h5>example</h5>
-
-<pre>{id: 'testId'} // id="testId"
-{id: 'testId',style:{color:'gold'}} // id="testId" style="color:gold;"</pre>
-
-<p>複数設定すると結合します。重複する場合は上書きされます</p>
-
-<pre>color_gold = {style:{color:'gold'}}
-color_silver = {style:{color:'silver'}}
-testId = {id:"testId"}
-note.pre('test', color_gold, color_silver, testId)</pre>
-
-<pre>&#x3C;pre style=&#x22;color:silver;&#x22; id=&#x22;testId&#x22;&#x3E;test&#x3C;/pre&#x3E;</pre>
-
-<h2 style="border-top:0px;border-right:0px;border-bottom:double 5px silver;border-left:0px;">Instance Method</h2>
-
-<h2 style="border-top:0px;border-right:0px;border-bottom:0px;border-left:4px solid silver;padding:0 15px;" id="p_tag">p</h2>
-
-<pre><code>p(text, color<sup style="color:gray;">opt</sup>, background-color<sup style="color:gray;">opt</sup>,  attributes<sup style="color:gray;">opt</sup>)</code></pre>
-
-<h5>Parameters:</h5>
-
-<table><tr><td>text</td><td>(string)</td><td>タグ内のtext</td></tr><tr><td>[color]</td><td>(string)</td><td>文字色</td></tr><tr><td>[background-color]</td><td>(string)</td><td>背景色</td></tr><tr><td>[attributes]</td><td>(Object)</td><td> タグの属性をObjectで指定します</td></tr></table>
-
-<h5>Returns:</h5>
-
-<table><tr><td>(Object)</td><td>jxbのinstanceが返ります</td></tr></table>
-
-<h5>example:</h5>
-
-<pre>note = new jxb()
-note.p('pタグが生成されます')
-.p('文字色、背景色が設定できます','gray','gold')
-.p('styleが適用できます',{style:{border: 'solid 1px #0000ff'}})
-.p('複数の属性を適用できます',{id:'p_04'},{class:'paragraph'})</pre>
-
-<h5>result:</h5>
-
-<p id="p_01">pタグが生成されます</p>
-
-<p style="color:gray;background-color:gold;" id="p_02">文字色、背景色が設定できます</p>
-
-<p id="p_03" style="border:solid 1px #0000ff;">styleが適用できます</p>
-
-<p id="p_04" class="paragraph">複数の属性を適用できます</p>
-
-<h2 style="border-top:0px;border-right:0px;border-bottom:0px;border-left:4px solid silver;padding:0 15px;">pre</h2>
-
-<pre><code>pre(text, color<sup style="color:gray;">opt</sup>, background-color<sup style="color:gray;">opt</sup>,  attributes<sup style="color:gray;">opt</sup>)</code></pre>
-
-<h5>Parameters:</h5>
-
-<table><tr><td>text</td><td>(string)</td><td>タグ内のtext</td></tr><tr><td>[color]</td><td>(string)</td><td>文字色</td></tr><tr><td>[background-color]</td><td>(string)</td><td>背景色</td></tr><tr><td>[attributes]</td><td>(Object)</td><td> タグの属性をObjectで指定します</td></tr></table>
-
-<h5>Returns:</h5>
-
-<table><tr><td>(Object)</td><td>jxbのinstanceが返ります</td></tr></table>
-
-<h5>example:</h5>
-
-<pre>note = new jxb()
-note.pre('preタグが生成されます')
-.pre('文字色、背景色が設定できます','gray','gold')
-.pre('styleが適用できます',{style:{color:'red'}})</pre>
-
-<h5>result:</h5>
-
-<pre>preタグが生成されます</pre>
-
-<pre style="color:gray;background-color:gold;">文字色、背景色が設定できます</pre>
-
-<pre style="color:red;">styleが適用できます</pre>
-
-<h2 style="border-top:0px;border-right:0px;border-bottom:0px;border-left:4px solid silver;padding:0 15px;">a</h2>
-
-<pre><code>a(text, url, _blank=false<sup style="color:gray;">opt</sup>,  attributes<sup style="color:gray;">opt</sup>)</code></pre>
-
-<h5>Parameters:</h5>
-
-<table><tr><td>text</td><td>(string)</td><td>リンクのtext</td></tr><tr><td>url</td><td>(string)</td><td>リンク先のurl</td></tr><tr><td>[target_blank]</td><td>(bool)</td><td>trueならtarget_blankに設定します</td></tr><tr><td>[attributes]</td><td>(Object)</td><td> タグの属性をObjectで指定します</td></tr></table>
-
-<h5>Returns:</h5>
-
-<table><tr><td>(Object)</td><td>jxbのinstanceが返ります</td></tr></table>
-
-<h5>example:</h5>
-
-<pre>note = new jxb()
-note.a('link 1','#')
-.br()
-.a('target:_blankを設定します','#',true)
-.br()
-.a('styleが適用できます','#',{style:{color:'gray'}})</pre>
-
-<h5>result:</h5>
-
-<p><a href="#">link 1</a><br /><a href="#" target="_blank">target:_blankを設定します</a><br /><a style="color:gray;" href="#">styleが適用できます</a><h2 style="border-top:0px;border-right:0px;border-bottom:0px;border-left:4px solid silver;padding:0 15px;" id="ruby_tag">ruby</h2></p>
-<pre><code>ruby(text, ruby)</code></pre>
-
-<h5>Parameters:</h5>
-
-<table><tr><td>text</td><td>(string)</td><td>リンクのtext</td></tr><tr><td>ruby</td><td>(string)</td><td>ルビ</td></tr><tr><td>[attributes]</td><td>(Object)</td><td> タグの属性をObjectで指定します</td></tr></table>
-
-<h5>Returns:</h5>
-
-<table><tr><td>(Object)</td><td>jxbのinstanceが返ります</td></tr></table>
-
-<h5>example:</h5>
-
-<pre>note = new jxb()
-note.ruby('向日葵','ひまわり',{id:'ruby_01'})
-.br()
-.ruby('脚下照顧','きゃっかしょうこ','gray','gold',{id:'ruby_02'})
-.br()
-hekireki = jxb.ruby('霹靂','ヘキレキ')
-note.p('晴天の'+hekireki)</pre>
-
-<h5>result:</h5>
-
-<p><ruby>向日葵<rp>(</rp><rt>ひまわり</rt><rp>)</rp></ruby><br /><ruby style="color:gray;background-color:gold;">脚下照顧<rp>(</rp><rt>きゃっかしょうこ</rt><rp>)</rp></ruby><br /><p>晴天の<ruby>霹靂<rp>(</rp><rt>ヘキレキ</rt><rp>)</rp></ruby></p></p>
-<h2 style="border-top:0px;border-right:0px;border-bottom:0px;border-left:4px solid silver;padding:0 15px;" id="table_tag">table</h2>
-
-<pre><code>ruby(text, ruby)</code></pre>
-
-<h5>Parameters:</h5>
-
-<table><tr><td>text</td><td>(string)</td><td>リンクのtext</td></tr><tr><td>ruby</td><td>(string)</td><td>ルビ</td></tr><tr><td>[attributes]</td><td>(Object)</td><td> タグの属性をObjectで指定します</td></tr></table>
-
-<h5>Returns:</h5>
-
-<table><tr><td>(Object)</td><td>jxbのinstanceが返ります</td></tr></table>
-
-<h5>example:</h5>
-
-<pre>note = new jxb()
-note.ruby('向日葵','ひまわり',{id:'ruby_01'})
-.br()
-.ruby('脚下照顧','きゃっかしょうこ','gray','gold',{id:'ruby_02'})
-.br()
-hekireki = jxb.ruby('霹靂','ヘキレキ')
-note.p('晴天の'+hekireki)</pre>
-
-<h5>result:</h5>
-
-<table><tr><td>index</td><td>age</td><td>name</td><td>gender</td></tr><tr><td>0</td><td>22</td><td>Ratliff</td><td>male</td></tr><tr><td>1</td><td>19</td><td>Shelley</td><td>female</td></tr><tr><td>2</td><td>17</td><td>Guerra</td><td>male</td></tr><tr><td>3</td><td>14</td><td>Cameron</td><td>male</td></tr><tr><td>4</td><td>15</td><td>Diann</td><td>female</td></tr><tr><td>5</td><td>18</td><td>Fay</td><td>female</td></tr><tr><td>6</td><td>30</td><td>Eula</td><td>female</td></tr><tr><td>7</td><td>17</td><td>Bridgett</td><td>female</td></tr><tr><td>8</td><td>28</td><td>Sarah</td><td>female</td></tr><tr><td>9</td><td>26</td><td>Minnie</td><td>female</td></tr></table>
-
-<table><tr><td>名前</td><td>年齢</td><td>性別</td></tr><tr><td>Ratliff</td><td>22</td><td>male</td></tr><tr><td>Shelley</td><td>19</td><td>female</td></tr><tr><td>Guerra</td><td>17</td><td>male</td></tr><tr><td>Cameron</td><td>14</td><td>male</td></tr><tr><td>Diann</td><td>15</td><td>female</td></tr><tr><td>Fay</td><td>18</td><td>female</td></tr><tr><td>Eula</td><td>30</td><td>female</td></tr><tr><td>Bridgett</td><td>17</td><td>female</td></tr><tr><td>Sarah</td><td>28</td><td>female</td></tr><tr><td>Minnie</td><td>26</td><td>female</td></tr></table>
-
-<footer style="text-align:center;"><hr><small style="text-shadow:0 4px 1px #ccc;">Generated by jxb</small></footer></body></html>
+data.forEach (row)-&gt;
+  if row[1] &gt; 20
+    row.push({style:{color: &#39;red&#39;}})
+note = new jxb()
+note.table(data)
+note.toBrowser()
+</code></pre>
+        <p><strong>result</strong></p>
+        <table>
+          <tr>
+            <td>name</td>
+            <td>age</td>
+            <td>score</td>
+          </tr>
+          <tr>
+            <td>ann</td>
+            <td>16</td>
+            <td>98</td>
+          </tr>
+          <tr style="color:red;">
+            <td>bob</td>
+            <td>22</td>
+            <td>76</td>
+          </tr>
+        </table>
+        <h4 id="-">セルに色を付ける</h4>
+        <p><code>jxb.tableCell</code>を使います</p>
+        <p><strong>sample code</strong></p>
+        <pre><code>data = [
+  [&#39;name&#39;,&#39;age&#39;,&#39;score&#39;],
+  [&#39;ann&#39;,16,98],
+  [&#39;bob&#39;,jxb.tableCell(22,&#39;gold&#39;,&#39;gray&#39;),76]
+]
+note = new jxb()
+note.table(data)
+note.toBrowser()
+</code></pre>
+        <p><strong>result</strong></p>
+        <table>
+          <tr>
+            <td>name</td>
+            <td>age</td>
+            <td>score</td>
+          </tr>
+          <tr>
+            <td>ann</td>
+            <td>16</td>
+            <td>98</td>
+          </tr>
+          <tr>
+            <td>bob</td>
+            <td style="color:gold;background-color:gray;">22</td>
+            <td>76</td>
+          </tr>
+        </table>
+        <h4 id="-">セルに色を付ける(条件分岐)</h4>
+        <p><strong>sample code</strong></p>
+        <pre><code>data = [
+  [&#39;name&#39;,&#39;age&#39;,&#39;score&#39;],
+  [&#39;ann&#39;,16,98],
+  [&#39;bob&#39;,22,76]
+]
+data.forEach (row)-&gt;
+  if row[0] is &#39;ann&#39;
+    row[0] = jxb.tableCell(row[0],&#39;gold&#39;,&#39;gray&#39;)
+note = new jxb()
+note.table(data)
+note.toBrowser()
+</code></pre>
+        <p><strong>result</strong></p>
+        <table>
+          <tr>
+            <td>name</td>
+            <td>age</td>
+            <td>score</td>
+          </tr>
+          <tr>
+            <td style="color:gold;background-color:gray;">ann</td>
+            <td>16</td>
+            <td>98</td>
+          </tr>
+          <tr>
+            <td>bob</td>
+            <td>22</td>
+            <td>76</td>
+          </tr>
+        </table>
+        <h4 id="object-array-">objectをarrayに変換する</h4>
+        <p>TODO!</p>
+        <h2 id="css">css</h2>
+        <p>ここではcssを設定する方法を説明します。</p>
+        <h3 id="template-">templateを読み込む</h3>
+        <hr>
+        <p>コンストラクタにnumber型を渡すとjxbに用意してあるcssを読み込みます。</p>
+        <pre><code>note = new jxb(1)
+</code></pre>
+        <p>cssは22種類あります。</p>
+        <ul>
+          <li>
+            <p>
+              <a href="https://github.com/sindresorhus/generate-github-markdown-css">sindresorhus/generate-github-markdown-css</a>
+            </p>
+          </li>
+          <li>
+            <p>
+              <a href="https://github.com/jonathantneal/sanitize.css">jonathantneal/sanitize.css</a> (0)</p>
+          </li>
+          <li>
+            <a href="http://jasonm23.github.io/markdown-css-themes/">jasonm23.github.io/markdown-css-themes/</a> (1-16)</li>
+          <li>
+            <a href="https://github.com/markdowncss/retro">markdowncss/retro</a> (17)</li>
+          <li>
+            <a href="https://github.com/markdowncss/modest">markdowncss/modest</a> (18)</li>
+          <li>
+            <a href="https://github.com/markdowncss/air">markdowncss/air</a> (19)</li>
+          <li>
+            <a href="https://github.com/simonlc/Markdown-CSS">simonlc/Markdown-CSS</a> (20)</li>
+        </ul>
+        <p>指定のない場合や存在しないtemplateを指定した場合は<code>Github Markdown CSS</code>が読み込まれます。 </p>
+        <h3 id="css-">cssを書きこむ</h3>
+        <hr>
+        <p>自分で書いたcssを使いたい場合はcss文字列をArrayに格納してコンストラクタに渡します。</p>
+        <p><strong>コンストラクタはArray型をcssだと解釈します</strong> 以下も同様で</p>
+        <pre><code>css = &#39;a:hover h4{background-color:red; cursor : pointer;}&#39;
+note = new jxb([css])
+</code></pre>
+        <h3 id="css-">cssを読み込む</h3>
+        <hr>
+        <h3 id="cdn-">cdnを読み込む</h3>
+        <hr>
+        <h3 id="-css-">複数のcssを設定する</h3>
+        <hr>
+        <pre><code>  arr = [
+    99999,
+    &#39;&lt;link href=&quot;https://fonts.googleapis.com/css?family=Gaegu&quot; rel=&quot;stylesheet&quot;&gt;&#39;,
+    &quot;p {font-family: &#39;Gaegu&#39;, cursive;}&quot;,
+    &#39;a:hover h4{background-color:red; cursor : pointer;}&#39;
+  ]
+  note = new jxb(arr)
+</code></pre>
+        <hr>
+        <h2 id="constructor-title-css-option-">constructor([title,css,option])</h2>
+        <h3 id="title-string">title: string</h3>
+        <p>Html documentのtitleを設定します。</p>
+        <h4 id="example">example</h4>
+        <pre><code>note = new jxb(&#39;document title&#39;)
+</code></pre>
+        <hr>
+        <h3 id="css-array">css: array</h3>
+        <p>htmlのcssを設定します。</p>
+        <p>数値型の場合、jxbに組み込みのcssを読み込みます。</p>
+        <h4 id="example">example</h4>
+        <pre><code>note = new jxb([11])
+</code></pre>
+        <hr>
+        <p>httpで始まるstringの場合、head内にlinkタグを生成します。</p>
+        <h4 id="example">example</h4>
+        <pre><code>note = new jxb(&#39;https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css&#39;)
+// &lt;link href=&quot;https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css&quot; rel=&quot;stylesheet&quot;&gt;
+</code></pre>
+        <hr>
+        <p>linkタグの場合、そのままhead内に展開します。</p>
+        <h4 id="example">example</h4>
+        <pre><code>note = new jxb(&#39;&lt;link href=&quot;https://fonts.googleapis.com/css?family=Ubuntu&quot; rel=&quot;stylesheet&quot;&gt;&quot;&#39;)
+// &lt;link href=&quot;https://fonts.googleapis.com/css?family=Ubuntu&quot; rel=&quot;stylesheet&quot;&gt;&quot;
+</code></pre>
+        <hr>
+        <p>その他の文字列はcssと見なし、styleタグが生成されます。</p>
+        <h4 id="example">example</h4>
+        <pre><code>note = new jxb(&#39;a{color:red;}&#39;)
+// &#39;&lt;style type=&quot;text/css&quot;&gt;a{color:red;}&lt;/style&gt;&#39;
+</code></pre>
+        <h3 id="option-object">option: object</h3>
+        <h4 id="sidebar">sidebar</h4>
+        <p>sidebarを設定します。jxbインスタンスを指定します。</p>
+        <h4 id="example">example</h4>
+      </main>
+    </div>
+    <footer style="text-align:center;">
+      <hr>
+      <small style="text-shadow:0 4px 1px #ccc;">Generated by jxb</small>
+    </footer>
+  </body>
+</html>
